@@ -21,15 +21,16 @@
 <script>
   var MAX_WIDTH = 100;
   var MAX_HEIGHT = 100;
-
-  //Uploads image
+  
+  
+  // New function called imageUploaded
   var imageUploaded = function() {
     //Checks if file is an image.
-     var file = $('#uploadImage').get(0);
-     if(file.files[0].type.split("/")[0].toLowerCase() != "image"){
-          alert("Incorrect file type -- Please ensure you are uploading an image file.");
-          return;
-      }
+    var file = $('#uploadImage').get(0); // shortcut for js - document.getElementById("uploadImage").get(0);
+    if(file.files[0].type.split("/")[0].toLowerCase() != "image"){
+		alert("Incorrect file type -- Please ensure you are uploading an image file.");
+        return;
+    }
 
     // Uploads image and sets it to the appropriate width and height. 
     // Uses dimensions from selectChanged function.
@@ -77,16 +78,23 @@
 
 
 
-  /* user defined function.
-    "parseInt($("#theSelect").val())" gets value and sets dimensions
-  */
-  function selectChanged(){
-    MAX_WIDTH = MAX_HEIGHT = parseInt($("#theSelect").val()) 
-    imageUploaded();
-  }
+	/* user defined function, gets value and sets dimensions */
+	/* "parseInt($("#theSelect").val())" gets value based on element ID then parses number stored in string to integer */
+	function selectChanged(){
+		MAX_WIDTH = MAX_HEIGHT = parseInt($("#theSelect").val());// shortcut for js - document.getElementById
+		imageUploaded();
+	}
+  
+	// Check button is clicked
+	function buttonclicked(){
+		var custom_width = $("#custom_width").val();
+		var custom_height = $("#custom_height").val();
+		
+		MAX_WIDTH = custom_width;
+		MAX_HEIGHT = custom_height;
+		imageUploaded();
+	}
 </script>
-
-
 
 
 
@@ -173,15 +181,21 @@
 	<option value=''>(Landscape) 1920x1280px </option>
 	<option value=''></option>
     </optgroup>
-	
-    <option value='custom'> Custom </option>
   </select>
+  
   
   <!-- Upload image button -->
   <input type="file" name="uploadImage" id="uploadImage" onchange="selectChanged()">
+  <input style="display:none" type="text" placeholder="Height" id="heightSize">
+
   <!-- Upload image box -->
   <img id="imagePreview">
-</body>
+  
+  <p> Enter custom dimensions! (Numbers only) </p>
+  <button value='custom' id="custom_button" onclick='buttonclicked()'> Generate </button>
+  <input type="text" name="custom_width" id="custom_width" placeholder="Width">
+  <input type="text" name="custom_height" id="custom_height" placeholder="Height">
+</body> 
 
 
 </html>
