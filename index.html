@@ -22,8 +22,7 @@
   var MAX_WIDTH = 100;
   var MAX_HEIGHT = 100;
   
-  
-  // New function called imageUploaded
+  // Function 
   var imageUploaded = function() {
     //Checks if file is an image.
     var file = $('#uploadImage').get(0); // shortcut for js - document.getElementById("uploadImage").get(0);
@@ -31,7 +30,7 @@
 		alert("Incorrect file type -- Please ensure you are uploading an image file.");
         return;
     }
-
+	
     // Uploads image and sets it to the appropriate width and height. 
     // Uses dimensions from selectChanged function.
      if ( file.files && file.files[0] && file.files[0].type.split("/")[0].toLowerCase() === "image") {
@@ -42,7 +41,7 @@
               var canvas = document.createElement("canvas");
               var img = document.createElement("img");
               
-              img.onload= function(){
+              img.onload = function(){
 
                  var width = img.width;
                  var height = img.height;
@@ -60,10 +59,12 @@
                         h2 = MAX_HEIGHT;
                      }
                  }
+				  // Canvas
                   canvas.width = w2;
                   canvas.height = h2;
                   var ctx = canvas.getContext("2d");
                   ctx.drawImage(img, 0, 0, w2, h2);
+
                   var base64St = canvas.toDataURL("image/png");
                   document.getElementById("imagePreview").src = base64St;
                   document.getElementById("imagePreview").style.height = MAX_HEIGHT + "px";
@@ -78,15 +79,17 @@
 
 
 
-	/* user defined function, gets value and sets dimensions */
+	/* Function, gets value and sets dimensions */
 	/* "parseInt($("#theSelect").val())" gets value based on element ID then parses number stored in string to integer */
 	function selectChanged(){
-		MAX_WIDTH = MAX_HEIGHT = parseInt($("#theSelect").val());// shortcut for js - document.getElementById
-		imageUploaded();
+		var dimensions = $("#theSelect").val().split("x");
+		MAX_WIDTH = dimensions[0];
+		MAX_HEIGHT = dimensions[1];
+		imageUploaded();		
 	}
   
 	// Check button is clicked
-	function buttonclicked(){
+	function customButtonClicked(){
 		var custom_width = $("#custom_width").val();
 		var custom_height = $("#custom_height").val();
 		
@@ -94,107 +97,111 @@
 		MAX_HEIGHT = custom_height;
 		imageUploaded();
 	}
+	
+	
 </script>
 
 
 
 </head>
-
+    
 <body>
-  <!-- Dropdown menu -->
-  <select id='theSelect' onchange='selectChanged()'>
-    <optgroup label='iOS Icons'>
-    <option value='57'> 57px </option>
-    <option value='72'> 72px </option>
-    <option value='144'> 144px </option>
-    <option value='1024'> 1024px </option>
-    <option value='29'> 29px </option>
-    <option value='48'> 48px </option>
-    <option value='58'> 58px </option>
-    <option value='64'> 64px </option>
-    <option value='320'> 320px </option>
-	<option value=''></option>
-    </optgroup>
+	<!-- Dropdown menu -->
+	<select id='theSelect' onchange='selectChanged()'>
+    <!--<option value='57x57' disabled selected>Select your dimensions</option>-->
+	<optgroup label='iOS Icons'>
+		<option value='57x57'> 57px </option>
+		<option value='72x72'> 72px </option>
+		<option value='144x144'> 144px </option>
+		<option value='1024x1024'> 1024px </option>
+		<option value='29x29'> 29px </option>
+		<option value='48x48'> 48px </option>
+		<option value='58x58'> 58px </option>
+		<option value='64x64'> 64px </option>
+		<option value='320x320'> 320px </option>
+	    <option value=''></option>
+	</optgroup>
 	
     <optgroup label='iOS Splash'> 
-	<option disabled> iPad Non-Retina (1x) </option>
-	<option value=''>(Portrait) 768x1024px </option>
-	<option value=''>(Landscape) 1024x768px </option>
+		<option disabled> iPad Non-Retina (1x) </option>
+		<option value='768x1024'>(Portrait) 768x1024px </option>
+		<option value='1024x768'>(Landscape) 1024x768px </option>
 
-	<option disabled> iPad Retina (2x) </option>
-	<option value=''>(Portrait) 1536x2048px </option>
-	<option value=''>(Landscape) 2048x1536px </option>
+		<option disabled> iPad Retina (2x) </option>
+		<option value='1536x2048'>(Portrait) 1536x2048px </option>
+		<option value='2048x1536'>(Landscape) 2048x1536px </option>
 	
-	<option disabled> iPod Non-Retina (1x) </option>
-	<option value=''>(Portrait) 320x480px </option>
-	<option value=''>(Landscape) 480x320px </option>
+		<option disabled> iPod Non-Retina (1x) </option>
+		<option value='320x480'>(Portrait) 320x480px </option>
+		<option value='480x320'>(Landscape) 480x320px </option>
 	
-	<option disabled> iPod Retina (2x) </option>
-	<option value=''>(Portrait) 640x960px </option>
-	<option value=''>(Landscape) 960x640px </option>
+		<option disabled> iPod Retina (2x) </option>
+		<option value='640x960'>(Portrait) 640x960px </option>
+		<option value='960x640'>(Landscape) 960x640px </option>
 	
-	<option disabled> iPhone 5 Retina (2x) </option>
-	<option value=''>(Portrait) 640x1136px </option>
-	<option value=''>(Landscape) 1136x640px </option>
+		<option disabled> iPhone 5 Retina (2x) </option>
+		<option value='640x1136'>(Portrait) 640x1136px </option>
+		<option value='1136x640'>(Landscape) 1136x640px </option>
 	
-	<option disabled> iPhone 6 (2x) </option>
-	<option value=''>(Portrait) 750x1334px </option>
-	<option value=''>(Landscape) 1334x750px </option>
+		<option disabled> iPhone 6 (2x) </option>
+		<option value='750x1334'>(Portrait) 750x1334px </option>
+		<option value='1334x750'>(Landscape) 1334x750px </option>
 	
-	<option disabled> iPhone 6 Plus(3x) </option>
-	<option value=''>(Portrait) 1242x2208px </option>
-	<option value=''>(Landscape) 2208x1242px </option>
-	<option value=''></option>
+		<option disabled> iPhone 6 Plus(3x) </option>
+		<option value='1242x2208'>(Portrait) 1242x2208px </option>
+		<option value='2208x1242'>(Landscape) 2208x1242px </option>
+		<option value=''></option>
 	</optgroup>
 	
     <optgroup label='Android Icons'>
-    <option disabled> Android </option>
-    <option value='192'> 192px </option>
-    <option value='144'> 144px </option>
-    <option value='96'> 96px </option>
-    <option value='72'> 72px </option>
-    <option value='48'> 48px </option>
-    <option value='36'> 36px </option>
-    <option value='512'> 512px </option>
-	<option value=''></option>
+		<option value='192x192'> 192px </option>
+		<option value='144x144'> 144px </option>
+		<option value='96x96'> 96px </option>
+		<option value='72x72'> 72px </option>
+		<option value='48x48'> 48px </option>
+		<option value='36x36'> 36px </option>
+		<option value='512x512'> 512px </option>
+		<option value=''></option>
     </optgroup>
 	
     <optgroup label='AndroidSplash'>
-	<option disabled> LDPI </option>
-	<option value=''>(Portrait) 200x320px </option>
-	<option value=''>(Landscape) 320x200px </option>
+		<option disabled> LDPI </option>
+		<option value='200x320'>(Portrait) 200x320px </option>
+		<option value='320x200'>(Landscape) 320x200px </option>
 	
-	<option disabled> MDPI </option>
-	<option value=''>(Portrait) 320x480px </option>
-	<option value=''>(Landscape) 480x320px </option>
+		<option disabled> MDPI </option>
+		<option value='320x480'>(Portrait) 320x480px </option>
+		<option value='480x320'>(Landscape) 480x320px </option>
 	
-	<option disabled> HDPI </option>
-	<option value=''>(Portrait) 480x800px </option>
-	<option value=''>(Landscape) 800x480px </option>
+		<option disabled> HDPI </option>
+		<option value='480x800'>(Portrait) 480x800px </option>
+		<option value='800x480'>(Landscape) 800x480px </option>
 
-	<option disabled> XXHDPI </option>
-	<option value=''>(Portrait) 960px1600px </option>
-	<option value=''>(Landscape) 1600x960px </option>
+		<option disabled> XXHDPI </option>
+		<option value='960px1600'>(Portrait) 960px1600px </option>
+		<option value='1600x960'>(Landscape) 1600x960px </option>
 	
-	<option disabled> XXXHDPI </option>
-	<option value=''>(Portrait) 1280px1920px </option>
-	<option value=''>(Landscape) 1920x1280px </option>
-	<option value=''></option>
+		<option disabled> XXXHDPI </option>
+		<option value='1280px1920'>(Portrait) 1280px1920px </option>
+		<option value='1920x1280'>(Landscape) 1920x1280px </option>
+		<option value=''></option>
     </optgroup>
-  </select>
+    </select>
   
   
-  <!-- Upload image button -->
-  <input type="file" name="uploadImage" id="uploadImage" onchange="selectChanged()">
-  <input style="display:none" type="text" placeholder="Height" id="heightSize">
 
-  <!-- Upload image box -->
-  <img id="imagePreview">
-  
-  <p> Enter custom dimensions! (Numbers only) </p>
-  <button value='custom' id="custom_button" onclick='buttonclicked()'> Generate </button>
-  <input type="text" name="custom_width" id="custom_width" placeholder="Width">
-  <input type="text" name="custom_height" id="custom_height" placeholder="Height">
+
+
+	<!-- Upload image button -->
+    <input type="file" name="uploadImage" id="uploadImage" onchange="selectChanged()">
+
+	<!-- Upload image box -->
+    <img id="imagePreview">
+	
+    <p> Enter custom dimensions! (Numbers only) </p>
+    <button value='custom' id="custom_button" onclick='customButtonClicked()'> Generate </button>
+    <input type="text" name="custom_width" id="custom_width" placeholder="Width">
+    <input type="text" name="custom_height" id="custom_height" placeholder="Height">
 </body> 
 
 
