@@ -59,22 +59,22 @@
 				 
 				 
 
-                 if (width > height) {
+                 if (width > height) {  // image is landscape
                      if (width > MAX_WIDTH) {
                         h2 = height * MAX_WIDTH / width;
                         w2 = MAX_WIDTH;
 						
 						imgW = w2;
-						imgH = imgW * (height/width)
+						imgH = imgW * (width/height)
 						
                      }
                  } else {
-                     if (height > MAX_HEIGHT) {
+                     if (height > MAX_HEIGHT) { // image is portrait
                         w2 = width * MAX_HEIGHT / height;
                         h2 = MAX_HEIGHT;
 						
 						imgH = h2;
-						imgW = imgH * (width/height)
+						imgW = imgH * (height/width)
                      }
                  }
 				  // ----- Canvas Options ///
