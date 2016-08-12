@@ -42,29 +42,57 @@
               var img = document.createElement("img");
               
               img.onload = function(){
-
+				  
+				 // Uploaded image dimensions
                  var width = img.width;
                  var height = img.height;
+				// var imgAR = width/height;
+				 
+				 // Canvas dimensions
                  var w2 = width;
                  var h2 = height;
+				 
+				 // Resize image dimensions
+				 var imgW = width;
+				 var imgH = height;
+				 
+				 
+				 
 
                  if (width > height) {
                      if (width > MAX_WIDTH) {
                         h2 = height * MAX_WIDTH / width;
                         w2 = MAX_WIDTH;
+						
+						imgW = w2;
+						imgH = imgW * (height/width)
+						
                      }
                  } else {
                      if (height > MAX_HEIGHT) {
                         w2 = width * MAX_HEIGHT / height;
                         h2 = MAX_HEIGHT;
+						
+						imgH = h2;
+						imgW = imgH * (width/height)
                      }
                  }
-				  // Canvas
+				  // ----- Canvas Options ///
                   canvas.width = w2;
                   canvas.height = h2;
-                  var ctx = canvas.getContext("2d");
-                  ctx.drawImage(img, 0, 0, w2, h2);
 
+                  var ctx = canvas.getContext("2d");
+                  //ctx.drawImage(img, 0, 0, w2, h2);
+
+				  // Trying to add canvas background color
+				  var colorPicked = document.getElementById("color_picker").value;
+				  ctx.fillStyle = colorPicked;
+				  ctx.fillRect(0,0,w2,h2);
+				  ctx.drawImage(img, (w2-imgW)/2 , (h2-imgH)/2, imgW, imgH);
+				  
+				  
+				  
+				  
                   var base64St = canvas.toDataURL("image/png");
                   document.getElementById("imagePreview").src = base64St;
                   document.getElementById("imagePreview").style.height = MAX_HEIGHT + "px";
@@ -85,7 +113,8 @@
 		var dimensions = $("#theSelect").val().split("x");
 		MAX_WIDTH = dimensions[0];
 		MAX_HEIGHT = dimensions[1];
-		imageUploaded();		
+		imageUploaded();	
+		
 	}
   
 	// Check button is clicked
@@ -96,7 +125,16 @@
 		MAX_WIDTH = custom_width;
 		MAX_HEIGHT = custom_height;
 		imageUploaded();
+		
 	}
+	
+	// Sets canvas background color
+	//function colorPicker(){
+		//var colorPicked = document.getElementById("color_picker").value;
+		//ctx.fillStyle = colorPicked;
+		//ctx.fillRect(20,20,150,100);
+	//} 
+	
 	
 	
 </script>
@@ -195,13 +233,19 @@
 	<!-- Upload image button -->
     <input type="file" name="uploadImage" id="uploadImage" onchange="selectChanged()">
 
+
+	<div id='customWrapper'>	
+    	<p> Enter custom dimensions! (Numbers only) </p>
+    	<button value='custom' id="custom_button" onclick='customButtonClicked()'> Generate </button>
+    	<input type="text" name="custom_width" id="custom_width" placeholder="Width">
+    	<input type="text" name="custom_height" id="custom_height" placeholder="Height">
+	</div>
+	
 	<!-- Upload image box -->
     <img id="imagePreview">
 	
-    <p> Enter custom dimensions! (Numbers only) </p>
-    <button value='custom' id="custom_button" onclick='customButtonClicked()'> Generate </button>
-    <input type="text" name="custom_width" id="custom_width" placeholder="Width">
-    <input type="text" name="custom_height" id="custom_height" placeholder="Height">
+	<!-- Color_Picker -->
+	<input type="color" onchange="imageUploaded()" name="color_picker" id="color_picker">
 </body> 
 
 
