@@ -53,8 +53,8 @@
                  var h2 = height;
 				 
 				 // Resize image dimensions
-				 var imgW = width;
-				 var imgH = height;
+				 var desiredW = width;
+				 var desiredH = height;
 				 
 				 
 				 
@@ -64,8 +64,8 @@
                         h2 = height * MAX_WIDTH / width;
                         w2 = MAX_WIDTH;
 						
-						imgW = w2;
-						imgH = imgW * (width/height)
+						desiredW = w2;
+						desiredH = (img.height * desiredW)/img.width
 						
                      }
                  } else {
@@ -73,8 +73,8 @@
                         w2 = width * MAX_HEIGHT / height;
                         h2 = MAX_HEIGHT;
 						
-						imgH = h2;
-						imgW = imgH * (height/width)
+						desiredH = h2;
+						desiredW = (img.width * desiredH)/desiredH;
                      }
                  }
 				  // ----- Canvas Options ///
@@ -88,7 +88,7 @@
 				  var colorPicked = document.getElementById("color_picker").value;
 				  ctx.fillStyle = colorPicked;
 				  ctx.fillRect(0,0,w2,h2);
-				  ctx.drawImage(img, (w2-imgW)/2 , (h2-imgH)/2, imgW, imgH);
+				  ctx.drawImage(img, (w2-desiredW)/2 , (h2-desiredH)/2, desiredW, desiredH);
 				  
 				  
 				  
