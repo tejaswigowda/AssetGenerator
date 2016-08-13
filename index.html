@@ -1,252 +1,264 @@
 <html>
+
 <head>
-<title>
-  Image Resizer
-</title>
+    <title>
+        Image Resizer
+    </title>
 
 
-<style>
-  #imagePreview{
-      height: 300px;
-      width: 300px;
-      display: block;
-  }
-</style>
-
-
-
-<!--  Javascript -->
-<script src="jquery-1.11.3.js" type="text/javascript"></script>
-
-<script>
-  var MAX_WIDTH = 100;
-  var MAX_HEIGHT = 100;
-  
-  // Function 
-  var imageUploaded = function() {
-    //Checks if file is an image.
-    var file = $('#uploadImage').get(0); // shortcut for js - document.getElementById("uploadImage").get(0);
-    if(file.files[0].type.split("/")[0].toLowerCase() != "image"){
-		alert("Incorrect file type -- Please ensure you are uploading an image file.");
-        return;
-    }
-	
-    // Uploads image and sets it to the appropriate width and height. 
-    // Uses dimensions from selectChanged function.
-     if ( file.files && file.files[0] && file.files[0].type.split("/")[0].toLowerCase() === "image") {
-          var FR = new FileReader();
-
-          FR.onload = function(e) {
-              var data = e.target.result;
-              var canvas = document.createElement("canvas");
-              var img = document.createElement("img");
-              
-              img.onload = function(){
-				  
-				 // Uploaded image dimensions
-                 var width = img.width;
-                 var height = img.height;
-				// var imgAR = width/height;
-				 
-				 // Canvas dimensions
-                 var w2 = width;
-                 var h2 = height;
-				 
-				 // Resize image dimensions
-				 var desiredW = width;
-				 var desiredH = height;
-				 
-				 
-				 
-
-                 if (width > height) {  // image is landscape 
-                     if (width > MAX_WIDTH) {
-                        h2 = height * MAX_WIDTH / width;
-                        w2 = MAX_WIDTH;
-						
-						desiredW = w2;
-						desiredH = (img.height * desiredW)/img.width
-						
-                     }
-                 } else {
-                     if (height > MAX_HEIGHT) { // image is portrait 
-                        w2 = width * MAX_HEIGHT / height;
-                        h2 = MAX_HEIGHT;
-						
-						desiredH = h2;
-						desiredW = (img.width * desiredH)/desiredH;
-                     }
-                 }
-				  // ----- Canvas Options ///
-                  canvas.width = w2;
-                  canvas.height = h2;
-
-                  var ctx = canvas.getContext("2d");
-                  //ctx.drawImage(img, 0, 0, w2, h2);
-
-				  // Trying to add canvas background color
-				  var colorPicked = document.getElementById("color_picker").value;
-				  ctx.fillStyle = colorPicked;
-				  ctx.fillRect(0,0,w2,h2);
-				  ctx.drawImage(img, (w2-desiredW)/2 , (h2-desiredH)/2, desiredW, desiredH);
-				  
-				  
-				  
-				  
-                  var base64St = canvas.toDataURL("image/png");
-                  document.getElementById("imagePreview").src = base64St;
-                  document.getElementById("imagePreview").style.height = MAX_HEIGHT + "px";
-                  document.getElementById("imagePreview").style.width= MAX_WIDTH + "px";
-              }
-              img.src = data;
-          };  
-
-          FR.readAsDataURL( file.files[0] );
-     }
-  }
+    <style>
+        #imagePreview {
+            height: 300px;
+            width: 300px;
+            display: block;
+        }
+    </style>
 
 
 
-	/* Function, gets value and sets dimensions */
-	/* "parseInt($("#theSelect").val())" gets value based on element ID then parses number stored in string to integer */
-	function selectChanged(){
-		var dimensions = $("#theSelect").val().split("x");
-		MAX_WIDTH = dimensions[0];
-		MAX_HEIGHT = dimensions[1];
-		imageUploaded();	
-		
-	}
-  
-	// Check button is clicked
-	function customButtonClicked(){
-		var custom_width = $("#custom_width").val();
-		var custom_height = $("#custom_height").val();
-		
-		MAX_WIDTH = custom_width;
-		MAX_HEIGHT = custom_height;
-		imageUploaded();
-		
-	}
-	
-	// Sets canvas background color
-	//function colorPicker(){
-		//var colorPicked = document.getElementById("color_picker").value;
-		//ctx.fillStyle = colorPicked;
-		//ctx.fillRect(20,20,150,100);
-	//} 
-	
-	
-	
-</script>
+    <!--  Javascript -->
+    <script src="jquery-1.11.3.js" type="text/javascript"></script>
+
+    <script>
+        var data77;
+        var MAX_WIDTH = 100;
+        var MAX_HEIGHT = 100;
+
+        // Function
+        var imageUploaded = function() {
+            //Checks if file is an image.
+            var file = $('#uploadImage').get(0); // shortcut for js - document.getElementById("uploadImage").get(0);
+            if (file.files[0].type.split("/")[0].toLowerCase() != "image") {
+                alert("Incorrect file type -- Please ensure you are uploading an image file.");
+                return;
+            }
+
+            // Uploads image and sets it to the appropriate width and height.
+            // Uses dimensions from selectChanged function.
+            if (file.files && file.files[0] && file.files[0].type.split("/")[0].toLowerCase() === "image") {
+                var FR = new FileReader();
+
+                FR.onload = function(e) {
+                    var data = e.target.result;
+                    var canvas = document.createElement("canvas");
+                    var img = document.createElement("img");
+
+                    img.onload = function() {
+
+                        // Uploaded image dimensions
+                        var width = img.width;
+                        var height = img.height;
+
+                        // Canvas dimensions
+                        var canvasW = MAX_WIDTH;
+                        var canvasH = MAX_HEIGHT;
+
+                        // Resize image dimensions
+                        var desiredW;
+                        var desiredH;
+
+
+                        // testing for landscape or portrait image dimensions
+                        if (img.width > img.height) { // image is landscape
+                            // Testing if image width is larger than canvas width then shrinks img to fit
+                            if (img.width > MAX_WIDTH) {
+                                canvasH = height * MAX_WIDTH / width;
+                                canvasW = MAX_WIDTH;
+
+                                desiredW = canvasW;
+                                desiredH = (img.height * desiredW) / img.width
+                            }
+                            else{
+                              desiredW = img.width;
+                              desiredH = img.height;
+                            }
+                        } else {
+                            // Testing if image height is larger than canvas height. Then shrinks to fit
+                            if (height > MAX_HEIGHT) { // image is portrait
+                                canvasW = width * MAX_HEIGHT / height;
+                                canvasH = MAX_HEIGHT;
+
+                                desiredH = canvasH;
+                                desiredW = (img.width * desiredH) / img.height;
+                            }
+                            else{
+                              desiredW = img.width;
+                              desiredH = img.height;
+                            }
+                        }
+                        // ----- Canvas Options ///
+                        canvas.width = canvasW;
+                        canvas.height = canvasH;
+
+                        data77 = img;
+                        console.log(canvasW, canvasH)
+                        console.log(width, height)
+                        console.log(desiredW, desiredH)
+
+                        var ctx = canvas.getContext("2d");
+                        //ctx.drawImage(img, 0, 0, canvasW, canvasH);
+
+                        // Trying to add canvas background color
+                        var colorPicked = document.getElementById("color_picker").value;
+                        ctx.fillStyle = colorPicked;
+                        ctx.fillRect(0, 0, canvasW, canvasH);
+                        ctx.drawImage(img, (MAX_WIDTH - desiredW) / 2, (MAX_HEIGHT - desiredH) / 2, desiredW, desiredH);
+
+                        console.log(desiredW, desiredH)
+
+
+
+                        var base64St = canvas.toDataURL("image/png");
+                        document.getElementById("imagePreview").src = base64St;
+                        document.getElementById("imagePreview").style.height = MAX_HEIGHT + "px";
+                        document.getElementById("imagePreview").style.width = MAX_WIDTH + "px";
+                    }
+                    img.src = data;
+                };
+
+                FR.readAsDataURL(file.files[0]);
+            }
+        }
+
+
+
+        /* Function, gets value and sets dimensions */
+        /* "parseInt($("#theSelect").val())" gets value based on element ID then parses number stored in string to integer */
+        function selectChanged() {
+            var dimensions = $("#theSelect").val().split("x");
+            MAX_WIDTH = parseFloat(dimensions[0]);
+            MAX_HEIGHT = parseFloat(dimensions[1]);
+            imageUploaded();
+
+        }
+
+        // Check button is clicked
+        function customButtonClicked() {
+            var custom_width = $("#custom_width").val();
+            var custom_height = $("#custom_height").val();
+
+            MAX_WIDTH = custom_width;
+            MAX_HEIGHT = custom_height;
+            imageUploaded();
+
+        }
+
+        // Sets canvas background color
+        //function colorPicker(){
+        //var colorPicked = document.getElementById("color_picker").value;
+        //ctx.fillStyle = colorPicked;
+        //ctx.fillRect(20,20,150,100);
+        //}
+    </script>
 
 
 
 </head>
-    
+
 <body>
-	<!-- Dropdown menu -->
-	<select id='theSelect' onchange='selectChanged()'>
-    <!--<option value='57x57' disabled selected>Select your dimensions</option>-->
-	<optgroup label='iOS Icons'>
-		<option value='57x57'> 57px </option>
-		<option value='72x72'> 72px </option>
-		<option value='144x144'> 144px </option>
-		<option value='1024x1024'> 1024px </option>
-		<option value='29x29'> 29px </option>
-		<option value='48x48'> 48px </option>
-		<option value='58x58'> 58px </option>
-		<option value='64x64'> 64px </option>
-		<option value='320x320'> 320px </option>
-	    <option value=''></option>
-	</optgroup>
-	
-    <optgroup label='iOS Splash'> 
-		<option disabled> iPad Non-Retina (1x) </option>
-		<option value='768x1024'>(Portrait) 768x1024px </option>
-		<option value='1024x768'>(Landscape) 1024x768px </option>
+    <!-- Dropdown menu -->
+    <select id='theSelect' onchange='selectChanged()'>
+        <!--<option value='57x57' disabled selected>Select your dimensions</option>-->
+        <optgroup label='iOS Icons'>
+            <option value='57x57'> 57px </option>
+            <option value='72x72'> 72px </option>
+            <option value='144x144'> 144px </option>
+            <option value='1024x1024'> 1024px </option>
+            <option value='29x29'> 29px </option>
+            <option value='48x48'> 48px </option>
+            <option value='58x58'> 58px </option>
+            <option value='64x64'> 64px </option>
+            <option value='320x320'> 320px </option>
+            <option value=''></option>
+        </optgroup>
 
-		<option disabled> iPad Retina (2x) </option>
-		<option value='1536x2048'>(Portrait) 1536x2048px </option>
-		<option value='2048x1536'>(Landscape) 2048x1536px </option>
-	
-		<option disabled> iPod Non-Retina (1x) </option>
-		<option value='320x480'>(Portrait) 320x480px </option>
-		<option value='480x320'>(Landscape) 480x320px </option>
-	
-		<option disabled> iPod Retina (2x) </option>
-		<option value='640x960'>(Portrait) 640x960px </option>
-		<option value='960x640'>(Landscape) 960x640px </option>
-	
-		<option disabled> iPhone 5 Retina (2x) </option>
-		<option value='640x1136'>(Portrait) 640x1136px </option>
-		<option value='1136x640'>(Landscape) 1136x640px </option>
-	
-		<option disabled> iPhone 6 (2x) </option>
-		<option value='750x1334'>(Portrait) 750x1334px </option>
-		<option value='1334x750'>(Landscape) 1334x750px </option>
-	
-		<option disabled> iPhone 6 Plus(3x) </option>
-		<option value='1242x2208'>(Portrait) 1242x2208px </option>
-		<option value='2208x1242'>(Landscape) 2208x1242px </option>
-		<option value=''></option>
-	</optgroup>
-	
-    <optgroup label='Android Icons'>
-		<option value='192x192'> 192px </option>
-		<option value='144x144'> 144px </option>
-		<option value='96x96'> 96px </option>
-		<option value='72x72'> 72px </option>
-		<option value='48x48'> 48px </option>
-		<option value='36x36'> 36px </option>
-		<option value='512x512'> 512px </option>
-		<option value=''></option>
-    </optgroup>
-	
-    <optgroup label='AndroidSplash'>
-		<option disabled> LDPI </option>
-		<option value='200x320'>(Portrait) 200x320px </option>
-		<option value='320x200'>(Landscape) 320x200px </option>
-	
-		<option disabled> MDPI </option>
-		<option value='320x480'>(Portrait) 320x480px </option>
-		<option value='480x320'>(Landscape) 480x320px </option>
-	
-		<option disabled> HDPI </option>
-		<option value='480x800'>(Portrait) 480x800px </option>
-		<option value='800x480'>(Landscape) 800x480px </option>
+        <optgroup label='iOS Splash'>
+            <option disabled> iPad Non-Retina (1x) </option>
+            <option value='768x1024'>(Portrait) 768x1024px </option>
+            <option value='1024x768'>(Landscape) 1024x768px </option>
 
-		<option disabled> XXHDPI </option>
-		<option value='960px1600'>(Portrait) 960px1600px </option>
-		<option value='1600x960'>(Landscape) 1600x960px </option>
-	
-		<option disabled> XXXHDPI </option>
-		<option value='1280px1920'>(Portrait) 1280px1920px </option>
-		<option value='1920x1280'>(Landscape) 1920x1280px </option>
-		<option value=''></option>
-    </optgroup>
+            <option disabled> iPad Retina (2x) </option>
+            <option value='1536x2048'>(Portrait) 1536x2048px </option>
+            <option value='2048x1536'>(Landscape) 2048x1536px </option>
+
+            <option disabled> iPod Non-Retina (1x) </option>
+            <option value='320x480'>(Portrait) 320x480px </option>
+            <option value='480x320'>(Landscape) 480x320px </option>
+
+            <option disabled> iPod Retina (2x) </option>
+            <option value='640x960'>(Portrait) 640x960px </option>
+            <option value='960x640'>(Landscape) 960x640px </option>
+
+            <option disabled> iPhone 5 Retina (2x) </option>
+            <option value='640x1136'>(Portrait) 640x1136px </option>
+            <option value='1136x640'>(Landscape) 1136x640px </option>
+
+            <option disabled> iPhone 6 (2x) </option>
+            <option value='750x1334'>(Portrait) 750x1334px </option>
+            <option value='1334x750'>(Landscape) 1334x750px </option>
+
+            <option disabled> iPhone 6 Plus(3x) </option>
+            <option value='1242x2208'>(Portrait) 1242x2208px </option>
+            <option value='2208x1242'>(Landscape) 2208x1242px </option>
+            <option value=''></option>
+        </optgroup>
+
+        <optgroup label='Android Icons'>
+            <option value='192x192'> 192px </option>
+            <option value='144x144'> 144px </option>
+            <option value='96x96'> 96px </option>
+            <option value='72x72'> 72px </option>
+            <option value='48x48'> 48px </option>
+            <option value='36x36'> 36px </option>
+            <option value='512x512'> 512px </option>
+            <option value=''></option>
+        </optgroup>
+
+        <optgroup label='AndroidSplash'>
+            <option disabled> LDPI </option>
+            <option value='200x320'>(Portrait) 200x320px </option>
+            <option value='320x200'>(Landscape) 320x200px </option>
+
+            <option disabled> MDPI </option>
+            <option value='320x480'>(Portrait) 320x480px </option>
+            <option value='480x320'>(Landscape) 480x320px </option>
+
+            <option disabled> HDPI </option>
+            <option value='480x800'>(Portrait) 480x800px </option>
+            <option value='800x480'>(Landscape) 800x480px </option>
+
+            <option disabled> XXHDPI </option>
+            <option value='960px1600'>(Portrait) 960px1600px </option>
+            <option value='1600x960'>(Landscape) 1600x960px </option>
+
+            <option disabled> XXXHDPI </option>
+            <option value='1280px1920'>(Portrait) 1280px1920px </option>
+            <option value='1920x1280'>(Landscape) 1920x1280px </option>
+            <option value=''></option>
+        </optgroup>
     </select>
-  
-  
 
 
 
-	<!-- Upload image button -->
+
+
+    <!-- Upload image button -->
     <input type="file" name="uploadImage" id="uploadImage" onchange="selectChanged()">
 
 
-	<div id='customWrapper'>	
-    	<p> Enter custom dimensions! (Numbers only) </p>
-    	<button value='custom' id="custom_button" onclick='customButtonClicked()'> Generate </button>
-    	<input type="text" name="custom_width" id="custom_width" placeholder="Width">
-    	<input type="text" name="custom_height" id="custom_height" placeholder="Height">
-	</div>
-	
-	<!-- Upload image box -->
+    <div id='customWrapper'>
+        <p> Enter custom dimensions! (Numbers only) </p>
+        <button value='custom' id="custom_button" onclick='customButtonClicked()'> Generate </button>
+        <input type="text" name="custom_width" id="custom_width" placeholder="Width">
+        <input type="text" name="custom_height" id="custom_height" placeholder="Height">
+    </div>
+
+    <!-- Upload image box -->
     <img id="imagePreview">
-	
-	<!-- Color_Picker -->
-	<input type="color" onchange="imageUploaded()" name="color_picker" id="color_picker">
-</body> 
+
+    <!-- Color_Picker -->
+    <input type="color" onchange="imageUploaded()" name="color_picker" id="color_picker">
+</body>
 
 
 </html>
