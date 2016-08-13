@@ -62,7 +62,7 @@
                         if (img.width > img.height) { // image is landscape
                             // Testing if image width is larger than canvas width then shrinks img to fit
                             if (img.width > MAX_WIDTH) {
-                                canvasH = height * MAX_WIDTH / width;
+                                //canvasH = height * MAX_WIDTH / width;
                                 canvasW = MAX_WIDTH;
 
                                 desiredW = canvasW;
@@ -74,8 +74,8 @@
                             }
                         } else {
                             // Testing if image height is larger than canvas height. Then shrinks to fit
-                            if (height > MAX_HEIGHT) { // image is portrait
-                                canvasW = width * MAX_HEIGHT / height;
+                            if (img.height > MAX_HEIGHT) { // image is portrait
+                                //canvasW = width * MAX_HEIGHT / height;
                                 canvasH = MAX_HEIGHT;
 
                                 desiredH = canvasH;
