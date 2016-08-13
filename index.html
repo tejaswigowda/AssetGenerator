@@ -102,7 +102,7 @@
                         var colorPicked = document.getElementById("color_picker").value;
                         ctx.fillStyle = colorPicked;
                         ctx.fillRect(0, 0, canvasW, canvasH);
-                        ctx.drawImage(img, (MAX_WIDTH - desiredW) / 2, (MAX_HEIGHT - desiredH) / 2, desiredW, desiredH);
+                        ctx.drawImage(img, (canvasW - desiredW) / 2, (canvasH - desiredH) / 2, desiredW, desiredH);
 
                         console.log(desiredW, desiredH)
 
