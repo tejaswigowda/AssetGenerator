@@ -62,7 +62,6 @@
                         if (img.width > img.height) { // image is landscape
                             // Testing if image width is larger than canvas width then shrinks img to fit
                             if (img.width > MAX_WIDTH) {
-                                //canvasH = height * MAX_WIDTH / width;
                                 canvasW = MAX_WIDTH;
 
                                 desiredW = canvasW;
@@ -75,7 +74,6 @@
                         } else {
                             // Testing if image height is larger than canvas height. Then shrinks to fit
                             if (img.height > MAX_HEIGHT) { // image is portrait
-                                //canvasW = width * MAX_HEIGHT / height;
                                 canvasH = MAX_HEIGHT;
 
                                 desiredH = canvasH;
@@ -102,6 +100,13 @@
                         var colorPicked = document.getElementById("color_picker").value;
                         ctx.fillStyle = colorPicked;
                         ctx.fillRect(0, 0, canvasW, canvasH);
+
+                        // Zooming
+                        var zoom = document.getElementById("zoom").value;
+                        var zp = parseFloat(zoom) / 100;
+                        desiredW = desiredW*zp;
+                        desiredH = desiredH*zp;
+                        
                         ctx.drawImage(img, (canvasW - desiredW) / 2, (canvasH - desiredH) / 2, desiredW, desiredH);
 
                         console.log(desiredW, desiredH)
@@ -245,6 +250,8 @@
     <!-- Upload image button -->
     <input type="file" name="uploadImage" id="uploadImage" onchange="selectChanged()">
 
+    <!-- Zoom button -->
+    <input id="zoom" type="range" min="0.0" max="1000" range="0.1" onchange="selectChanged()"/>
 
     <div id='customWrapper'>
         <p> Enter custom dimensions! (Numbers only) </p>
