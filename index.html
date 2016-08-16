@@ -126,19 +126,25 @@
         }
 
 
-
         /* Function, gets value and sets dimensions */
         /* "parseInt($("#theSelect").val())" gets value based on element ID then parses number stored in string to integer */
         function selectChanged() {
+            if($("#theSelect").val() == 'custom'){
+                $("#customWrapper").show();
+            }
+            else{
             var dimensions = $("#theSelect").val().split("x");
             MAX_WIDTH = parseFloat(dimensions[0]);
             MAX_HEIGHT = parseFloat(dimensions[1]);
             imageUploaded();
+                            $("#customWrapper").hide();
 
+        }
         }
 
         // Check button is clicked
         function customButtonClicked() {
+
             var custom_width = $("#custom_width").val();
             var custom_height = $("#custom_height").val();
 
@@ -146,6 +152,21 @@
             MAX_HEIGHT = custom_height;
             imageUploaded();
 
+        }
+
+        function gradChanged(){
+            if(parseInt($('#gradType').val()) > 0){
+
+                $('#gradWrapper').show();
+            }
+            else{
+                $('#gradWrapper').hide();
+            }
+
+        }
+
+        function gradButtonClicked(){
+            imageUploaded();
         }
 
         // Sets canvas background color
@@ -239,7 +260,7 @@
             <option disabled> XXXHDPI </option>
             <option value='1280px1920'>(Portrait) 1280px1920px </option>
             <option value='1920x1280'>(Landscape) 1920x1280px </option>
-            <option value=''></option>
+            <option value='custom'>Custom</option>
         </optgroup>
     </select>
 
@@ -253,18 +274,34 @@
     <!-- Zoom button -->
     <input id="zoom" type="range" min="0.0" max="1000" range="0.1" onchange="selectChanged()"/>
 
-    <div id='customWrapper'>
-        <p> Enter custom dimensions! (Numbers only) </p>
-        <button value='custom' id="custom_button" onclick='customButtonClicked()'> Generate </button>
-        <input type="text" name="custom_width" id="custom_width" placeholder="Width">
-        <input type="text" name="custom_height" id="custom_height" placeholder="Height">
+    <div id='customWrapper' style="display: none">
+        <p> Enter custom dimensions!</p>
+        <input type="text" onchange='customButtonClicked()' name="custom_width" id="custom_width" placeholder="Width"> <span> px </span>
+        <input type="text" onchange='customButtonClicked()' name="custom_height" id="custom_height" placeholder="Height"><span> px </span>
+    </div>
+        <!-- Color_Picker -->
+    <input type="color" onchange="imageUploaded()" name="color_picker" id="color_picker">
+
+    <select id='gradType' onchange='gradChanged()'>
+        <option value="0"> No Gradient</option>
+        <option value="1"> Radial</option>
+        <option value="2"> Vertical</option>
+        <option value="3"> Horizontal</option>
+    </select>
+
+    <div id='gradWrapper' style="display: none">
+    <p> Offset</p>
+
+        <input type="text" onchange='gradButtonClicked()' name="offset_width" id="offset_width" placeholder="Offset X"> <span> px </span>
+        <input type="text" onchange='gradButtonClicked()' name="offset_height" id="offset_height" placeholder="Offset Y"><span> px </span>
+            <input type="color" onchange="imageUploaded()" name="color_picker1" id="color_picker1">
+
     </div>
 
-    <!-- Upload image box -->
+
+        <!-- Upload image box -->
     <img id="imagePreview">
 
-    <!-- Color_Picker -->
-    <input type="color" onchange="imageUploaded()" name="color_picker" id="color_picker">
 </body>
 
 
