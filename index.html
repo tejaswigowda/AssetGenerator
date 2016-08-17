@@ -95,7 +95,6 @@
                         console.log(desiredW, desiredH)
 
                         var ctx = canvas.getContext("2d");
-                        //ctx.drawImage(img, 0, 0, canvasW, canvasH);
 
                         // Trying to add canvas background color
                         var colorPicked = $("#color_picker").spectrum("get").toHexString();
@@ -177,7 +176,12 @@
         //ctx.fillRect(20,20,150,100);
         //}
         function start(){
-          $("#color_picker").spectrum({showAlpha: false, cancelText: "test"})
+          $("#color_picker").spectrum({change: function(color) {
+                imageUploaded();
+          },showAlpha: false, cancelText: "test"})
+          $("#color_picker1").spectrum({change: function(color) {
+                imageUploaded();
+          },showAlpha: false, cancelText: "test"})
         }
 
 
@@ -285,8 +289,6 @@
         <p> Enter custom dimensions!</p>
         <input type="text" onchange='customButtonClicked()' name="custom_width" id="custom_width" placeholder="Width"> <span> px </span>
         <input type="text" onchange='customButtonClicked()' name="custom_height" id="custom_height" placeholder="Height"><span> px </span>
-    <!-- Color Picker Spectrum -->
-    <input type="color" onchange="imageUploaded()" name="color_picker" id="color_picker">
 
     </div>
         <!-- Color_Picker -->
