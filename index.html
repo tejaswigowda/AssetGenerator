@@ -111,6 +111,12 @@
     <div id='uploadWrapper'>
       <input type="file" name="uploadImage" id="uploadImage" onchange="selectChanged()">
     </div>
+        <label for='offset_x'> Width</label>
+      <input class='checkDirect' type="checkbox" onchange='customButtonClicked()' name="offset_x" id="offset_x">
+        <input class='inp100' type="number" onchange='customButtonClicked()' name="offset_x_width" id="offset_x_width" placeholder="Width" min="0" max="100" step=".1"> <span class='percent'> %</span>
+        <label for='offset_y'> Height</label>
+      <input class='checkDirect' type="checkbox" onchange='customButtonClicked()' name="offset_y" id="offset_y">
+        <input class='inp100'  type="number" onchange='customButtonClicked()' name="offset_y_width" id="offset_y_width" placeholder="Height" min="0" max="100" step=".1"><span class='percent'> % </span>
 
     <!-- Zoom button -->
     <label for='zoom'> Zoom</label>
@@ -119,9 +125,9 @@
     <div id='customWrapper' style="display: none">
         <p> Enter custom dimensions!</p>
         <label for='custom_width'> Width</label>
-        <input class='inp100' type="text" onchange='customButtonClicked()' name="custom_width" id="custom_width" placeholder="Width"> <span> px </span>
+        <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_width" id="custom_width" placeholder="Width" min="0" max="100" step=".1"> <span class='percent'> %</span>
         <label for='custom_height'> Height</label>
-        <input type="text" onchange='customButtonClicked()' name="custom_height" id="custom_height" placeholder="Height"><span> px </span>
+        <input class='inp100'  type="number" onchange='customButtonClicked()' name="custom_height" id="custom_height" placeholder="Height" min="0" max="100" step=".1"><span class='percent'> % </span>
 
     </div>
         <!-- Color_Picker -->

@@ -207,6 +207,7 @@
 
   VMasker.toNumber = function(value) {
     var v = value.toString().replace(/(?!^-)[^0-9]/g, "");
+   // console.log(v);
     if (v.length == 0){
        return "";
     }
