@@ -5,20 +5,30 @@
         Image Resizer
     </title>
 
-    <link rel='stylesheet' href='spectrum.css' />
     <style>
         #imagePreview {
             height: 300px;
             width: 300px;
             display: block;
+            box-shadow: black 0px 1px 10px;
+            margin: auto;
+            margin-top: 10px;
+            border: dotted 5px;
         }
     </style>
 
 
 
     <!--  Javascript -->
-    <script src="jquery-1.11.3.js" type="text/javascript"></script>
-    <script src='spectrum.js'></script>
+    <script
+  src="https://code.jquery.com/jquery-3.1.0.min.js"
+      integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+    crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="main.js"></script>
 
     <script>
         var data77;
@@ -312,7 +322,9 @@
 
 
         <!-- Upload image box -->
-    <img id="imagePreview">
+    <div id='ipWrapper'>
+      <img id="imagePreview">
+    </div>
 
 </body>
 <style>
