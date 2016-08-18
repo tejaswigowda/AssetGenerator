@@ -15,10 +15,13 @@
 
     <link rel="stylesheet" type="text/css" href="main.css">
     <script src="main.js"></script>
+
+    <script src="vanilla.js"></script>
 </head>
 
 <body onload='start()'>
     <!-- Dropdown menu -->
+    <label for='theSelect'> Dimensions</label>
     <select id='theSelect' onchange='selectChanged()'>
         <!--<option value='57x57' disabled selected>Select your dimensions</option>-->
         <optgroup label='iOS Icons'>
@@ -110,11 +113,14 @@
     </div>
 
     <!-- Zoom button -->
+    <label for='zoom'> Zoom</label>
     <input id="zoom" type="range" min="0.0" max="1000" range="0.1" onchange="selectChanged()"/>
 
     <div id='customWrapper' style="display: none">
         <p> Enter custom dimensions!</p>
-        <input type="text" onchange='customButtonClicked()' name="custom_width" id="custom_width" placeholder="Width"> <span> px </span>
+        <label for='custom_width'> Width</label>
+        <input class='inp100' type="text" onchange='customButtonClicked()' name="custom_width" id="custom_width" placeholder="Width"> <span> px </span>
+        <label for='custom_height'> Height</label>
         <input type="text" onchange='customButtonClicked()' name="custom_height" id="custom_height" placeholder="Height"><span> px </span>
 
     </div>

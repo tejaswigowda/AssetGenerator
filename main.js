@@ -159,6 +159,7 @@
           $("#color_picker1").spectrum({change: function(color) {
                 imageUploaded();
           },showAlpha: false, cancelText: "test"})
+          VMasker(document.querySelector(".inp100")).maskNumber();
         }
 
 
