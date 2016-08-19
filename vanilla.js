@@ -215,8 +215,8 @@
     if (v > 100){
       return "100";
     }
-    else if(v < -100){
-      return "-100";
+    else if(v < 0){
+      return "0";
     }
     else{
       return v.toString();
@@ -224,7 +224,21 @@
   };
   
   VMasker.toAlphaNumeric = function(value) {
-    return value.toString().replace(/[^a-z0-9 ]+/i, "");
+    var v = value.toString().replace(/(?!^-)[^0-9]/g, "");
+   // console.log(v);
+    if (v.length == 0){
+       return "";
+    }
+    var v = parseFloat(v);
+    if (v > 1000){
+      return "1000";
+    }
+    else if(v < 0){
+      return "0";
+    }
+    else{
+      return v.toString();
+    } 
   };
 
   return VMasker;

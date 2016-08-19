@@ -24,8 +24,13 @@
 
 
 
+
     <div id="main">
 
+      <div id='uploadWrapper'>
+        <div id='uploadWrapperBG'></div>
+        <input type='file' name='uploadImage' id='uploadImage' onchange='selectChanged()'>
+      </div>
       <!-- Container for Dimension options -->
       <div id="dimensionDiv">
           <!-- Dropdown menu -->
@@ -113,12 +118,20 @@
             </optgroup>
           </select>
 
-          <!-- Custom Button -->
-         <button type="button" id="custom-button" > Custom </button>
+
+        <!-- Custom Inputs -->
+        <div id='customWrapper' style="display: none">
+            <p> Enter custom dimensions!</p>
+            <label for='custom_width'> Width</label>
+            <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_width" id="custom_width" placeholder="Width" min="0" max="100" step=".1"> <span class='percent'> %</span>
+            <label for='custom_height'> Height</label>
+            <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_height" id="custom_height" placeholder="Height" min="0" max="100" step=".1"><span class='percent'> % </span>
+        </div>
+
 
           <!-- Zoom button -->
           <label for='zoom'> Zoom</label>
-          <input id="zoom" value="100" type="range" min="0.0" max="500" range="0.1" onchange="selectChanged()" />
+          <input id="zoom" class='inp1000' value="100" type="number" min="0.0" max="1000" step="0.1" onchange="selectChanged()" />
       </div>
 
 
@@ -140,16 +153,6 @@
       </div>
 
 
-        <!-- Custom Inputs -->
-        <div id='customWrapper' style="display: none">
-            <p> Enter custom dimensions!</p>
-            <label for='custom_width'> Width</label>
-            <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_width" id="custom_width" placeholder="Width" min="0" max="100" step=".1"> <span class='percent'> %</span>
-            <label for='custom_height'> Height</label>
-            <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_height" id="custom_height" placeholder="Height" min="0" max="100" step=".1"><span class='percent'> % </span>
-        </div>
-
-
         <div id='gradWrapper' style="display: none">
             <p> Offset</p>
 
@@ -160,18 +163,9 @@
 
     </div>
 
-    <!-- Upload image button -->
-    <div id='uploadWrapper'>
-        <input type="file" name="uploadImage" id="uploadImage" onchange="selectChanged()">
-    </div>
-
-        <!-- Upload image box -->
         <div id='ipWrapper'>
             <img id="imagePreview">
         </div>
-
-
-
 
 </body>
 

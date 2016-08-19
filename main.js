@@ -102,6 +102,7 @@
 
                         var base64St = canvas.toDataURL("image/png");
                         document.getElementById("imagePreview").src = base64St;
+                        document.getElementById("uploadWrapperBG").style.backgroundImage = "url(" + img.currentSrc + ")";
                         document.getElementById("imagePreview").style.height = MAX_HEIGHT + "px";
                         document.getElementById("imagePreview").style.width = MAX_WIDTH + "px";
                     }
@@ -189,5 +190,6 @@
                 cancelText: "test"
             })
             VMasker(document.querySelector(".inp100")).maskNumber();
+            VMasker(document.querySelector(".inp1000")).maskAlphaNum();
 
         }
