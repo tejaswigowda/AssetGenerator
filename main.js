@@ -83,10 +83,17 @@
 
 
 
-                        // Trying to add canvas background color
-                        var colorPicked = $("#color_picker").spectrum("get").toHexString();
-                        ctx.fillStyle = colorPicked;
-                        ctx.fillRect(0, 0, canvasW, canvasH);
+                        // // Trying to add canvas background color
+                        // var colorPicked = $("#color_picker").spectrum("get").toHexString();
+                        // ctx.fillStyle = colorPicked;
+                        // ctx.fillRect(0, 0, canvasW, canvasH);
+
+                        // /////background decision/////
+                        // if(gradChanged()== 0){
+                        //   solidBackgroundColor();
+                        // }else{
+                        //   gradientBackgroundColor();
+                        // }
 
                         // Zooming
                         var zoom = document.getElementById("zoom").value;
@@ -164,6 +171,24 @@
               $("#gradType").hide();
           }
 
+        }
+
+        // ---- Options for what background is picked -----
+        // No gradient canvas background color
+        function solidBackgroundColor(){
+          var colorPicked = $("#color_picker").spectrum("get").toHexString();
+          ctx.fillStyle = colorPicked;
+          ctx.fillRect(0, 0, canvasW, canvasH);
+        }
+
+        // Gradient canvas background color
+        function gradientBackgroundColor(){
+          var gradient = ctx.createLinearGradient(0,0,0,canvasH);
+          gradient.addColorStop(.0,"blue");
+          gradient.addColorStop(1,"red");
+          ctx.fillStyle = gradient;
+          ctx.fillRect(0,0,canvasW,canvasH);
+          console.log("Test");
         }
 
 

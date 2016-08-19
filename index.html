@@ -132,10 +132,9 @@
 
 
           <select id='gradType' style="display: none" onchange='gradChanged()'>
-              <option value="0"> No Gradient</option>
-              <option value="1"> Radial</option>
-              <option value="2"> Vertical</option>
-              <option value="3"> Horizontal</option>
+              <option value="0"> Radial</option>
+              <option value="1"> Vertical</option>
+              <option value="2"> Horizontal</option>
           </select>
       </div>
 
@@ -150,6 +149,7 @@
         </div>
 
 
+        <!-- Gradient wrapper-->
         <div id='gradWrapper' style="display: none">
             <p> Offset</p>
 
@@ -158,17 +158,19 @@
             <input type="color" onchange="imageUploaded()" name="color_picker1" id="color_picker1">
         </div>
 
-    </div>
-
-    <!-- Upload image button -->
-    <div id='uploadWrapper'>
-        <input type="file" name="uploadImage" id="uploadImage" onchange="selectChanged()">
-    </div>
-
-        <!-- Upload image box -->
-        <div id='ipWrapper'>
-            <img id="imagePreview">
+        <!-- Upload image wrapper-->
+        <div id='uploadWrapper'>
+            <input type="file" name="uploadImage" id="uploadImage" onchange="selectChanged()">
         </div>
+
+    </div>
+
+
+
+    <!-- Upload image box -->
+    <div id='ipWrapper'>
+        <img id="imagePreview">
+    </div>
 
 
 
