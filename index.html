@@ -145,14 +145,24 @@
 
 
           <select id='gradType' style="display: none" onchange='gradChanged()'>
-              <option value="0"> No Gradient</option>
-              <option value="1"> Radial</option>
-              <option value="2"> Vertical</option>
-              <option value="3"> Horizontal</option>
+              <option value="0"> Radial</option>
+              <option value="1"> Vertical</option>
+              <option value="2"> Horizontal</option>
           </select>
       </div>
 
 
+        <!-- Custom Inputs -->
+        <div id='customWrapper' style="display: none">
+            <p> Enter custom dimensions!</p>
+            <label for='custom_width'> Width</label>
+            <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_width" id="custom_width" placeholder="Width" min="0" max="100" step=".1"> <span class='percent'> %</span>
+            <label for='custom_height'> Height</label>
+            <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_height" id="custom_height" placeholder="Height" min="0" max="100" step=".1"><span class='percent'> % </span>
+        </div>
+
+
+        <!-- Gradient wrapper-->
         <div id='gradWrapper' style="display: none">
             <p> Offset</p>
 
@@ -161,11 +171,15 @@
             <input type="color" onchange="imageUploaded()" name="color_picker1" id="color_picker1">
         </div>
 
+        <!-- Upload image wrapper-->
+      <!-- Upload image box -->
+      <div id='ipWrapper'>
+          <img id="imagePreview">
+      </div>
     </div>
 
-        <div id='ipWrapper'>
-            <img id="imagePreview">
-        </div>
+
+
 
 </body>
 
