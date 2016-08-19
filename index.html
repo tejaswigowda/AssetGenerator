@@ -146,14 +146,14 @@
       <!-- Container for Color options -->
       <div id="colorDiv">
           <!--Color_Picker -->
-          <label for='color'> Color</label>
+          <label for='color_picker'> Primary Color </label>
           <input id="color_picker" type="color" onchange="imageUploaded()" name="color_picker">
 
           <input type="checkbox" id="gradCheck"> <span> Gradient</span>
 
 
           <select id='gradType' style="display: none" onchange='imageUploaded()'>
-              <option> Select Gradient </option>
+              <option value="3"> Select Gradient </option>
               <option value="0"> Radial </option>
               <option value="1"> Vertical </option>
               <option value="2"> Horizontal </option>
@@ -161,10 +161,11 @@
 
           <!-- Gradient wrapper-->
           <div id='gradWrapper' style="display: none">
-              <p> Offset</p>
+              <label for='color_picker1'> Secondary Color </label>
+              <input type="color" onchange="imageUploaded()" name="color_picker1" id="color_picker1">
+              <p> Offset </p>
               <input type="text" onchange='gradButtonClicked()' name="offset_width" id="offset_width" placeholder="Offset X"> <span> px </span>
               <input type="text" onchange='gradButtonClicked()' name="offset_height" id="offset_height" placeholder="Offset Y"><span> px </span>
-              <input type="color" onchange="imageUploaded()" name="color_picker1" id="color_picker1">
           </div>
       </div>
 

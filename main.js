@@ -77,58 +77,56 @@
                         var ctx = canvas.getContext("2d");
 
 
+                        // Logic for background color fill
                         var x = document.getElementById("gradCheck").checked;
+                        var colorPickedPrimary = $("#color_picker").spectrum("get").toHexString();
+                        var colorPickedSecondary = $("#color_picker1").spectrum("get").toHexString();
+
                         if (x == true){
                             $("#gradType").show();
                             $('#gradWrapper').show();
 
                             if (parseInt($('#gradType').val()) == 0) {
-                                alert ("Radial!");
                                 var gradient = ctx.createRadialGradient(100,100,5,100,100,200);
-                                gradient.addColorStop(.0,"blue");
-                                gradient.addColorStop(1,"red");
+                                gradient.addColorStop(.0,colorPickedPrimary);
+                                gradient.addColorStop(1,colorPickedSecondary);
                                 ctx.fillStyle = gradient;
                                 ctx.fillRect(10,10,canvasW,canvasH);
 
                             }else if (parseInt($('#gradType').val()) == 1){
-                                alert ("Vertical!");
                                 var gradient = ctx.createLinearGradient(0,0,0,canvasH);
-                                gradient.addColorStop(.0,"blue");
-                                gradient.addColorStop(1,"red");
+                                gradient.addColorStop(.0,colorPickedPrimary);
+                                gradient.addColorStop(1,colorPickedSecondary);
                                 ctx.fillStyle = gradient;
                                 ctx.fillRect(0,0,canvasW,canvasH);
-                                console.log("Vertical");
 
                             }else if (parseInt($('#gradType').val()) == 2){
-                                alert ("Horizontal!");
                                 var gradient = ctx.createLinearGradient(0,0,canvasH,0);
-                                gradient.addColorStop(.0,"red");
-                                gradient.addColorStop(1,"blue");
+                                gradient.addColorStop(.0,colorPickedPrimary);
+                                gradient.addColorStop(1,colorPickedSecondary);
                                 ctx.fillStyle = gradient;
                                 ctx.fillRect(0,0,canvasW,canvasH);
-                                console.log("Horizontal");
-                            }
 
+                            }else if (parseInt($('#gradType').val()) == 3){
+                              ctx.fillStyle = colorPickedPrimary;
+                              ctx.fillRect(0, 0, canvasW, canvasH);
+                            }
                         }else{
                             $("#gradType").hide();
                             $('#gradWrapper').hide();
-                            var colorPicked = $("#color_picker").spectrum("get").toHexString();
-                            ctx.fillStyle = colorPicked;
+                            ctx.fillStyle = colorPickedPrimary;
                             ctx.fillRect(0, 0, canvasW, canvasH);
                         }
 
 
+                        // Place image
+                        ctx.drawImage(img, (canvasW - desiredW) / 2, (canvasH - desiredH) / 2, desiredW, desiredH);
 
                         // Zooming
                         var zoom = document.getElementById("zoom").value;
                         var zp = parseFloat(zoom) / 100;
                         desiredW = desiredW * zp;
                         desiredH = desiredH * zp;
-
-                        ctx.drawImage(img, (canvasW - desiredW) / 2, (canvasH - desiredH) / 2, desiredW, desiredH);
-
-                        console.log(desiredW, desiredH)
-
 
                         var base64St = canvas.toDataURL("image/png");
                         document.getElementById("imagePreview").src = base64St;
@@ -200,23 +198,6 @@
         //
         // }
 
-        // ---- Options for what background is picked -----
-        // No gradient canvas background color
-        function solidBackgroundColor(){
-          var colorPicked = $("#color_picker").spectrum("get").toHexString();
-          ctx.fillStyle = colorPicked;
-          ctx.fillRect(0, 0, canvasW, canvasH);
-        }
-
-        // Gradient canvas background color
-        function gradientBackgroundColor(){
-          var gradient = ctx.createLinearGradient(0,0,0,canvasH);
-          gradient.addColorStop(.0,"blue");
-          gradient.addColorStop(1,"red");
-          ctx.fillStyle = gradient;
-          ctx.fillRect(0,0,canvasW,canvasH);
-          console.log("Test");
-        }
 
 
         function start() {
