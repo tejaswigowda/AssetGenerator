@@ -2,13 +2,10 @@
 
 <head>
     <title>
-        Asset Manager
+        Asset Generator
     </title>
 
-    <script
-  src="https://code.jquery.com/jquery-3.1.0.min.js"
-      integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
@@ -20,140 +17,161 @@
 </head>
 
 <body onload='start()'>
-    <!-- Dropdown menu -->
-    <label for='theSelect'> Dimensions</label>
-    <select id='theSelect' onchange='selectChanged()'>
-        <!--<option value='57x57' disabled selected>Select your dimensions</option>-->
-        <optgroup label='iOS Icons'>
-            <option value='57x57'> 57px </option>
-            <option value='72x72'> 72px </option>
-            <option value='144x144'> 144px </option>
-            <option value='1024x1024'> 1024px </option>
-            <option value='29x29'> 29px </option>
-            <option value='48x48'> 48px </option>
-            <option value='58x58'> 58px </option>
-            <option value='64x64'> 64px </option>
-            <option value='320x320'> 320px </option>
-            <option value=''></option>
-        </optgroup>
 
-        <optgroup label='iOS Splash'>
-            <option disabled> iPad Non-Retina (1x) </option>
-            <option value='768x1024'>(Portrait) 768x1024px </option>
-            <option value='1024x768'>(Landscape) 1024x768px </option>
+    <div id="header">
+        <h1> Asset Generator </h1>
+    </div>
 
-            <option disabled> iPad Retina (2x) </option>
-            <option value='1536x2048'>(Portrait) 1536x2048px </option>
-            <option value='2048x1536'>(Landscape) 2048x1536px </option>
 
-            <option disabled> iPod Non-Retina (1x) </option>
-            <option value='320x480'>(Portrait) 320x480px </option>
-            <option value='480x320'>(Landscape) 480x320px </option>
 
-            <option disabled> iPod Retina (2x) </option>
-            <option value='640x960'>(Portrait) 640x960px </option>
-            <option value='960x640'>(Landscape) 960x640px </option>
+    <div id="main">
 
-            <option disabled> iPhone 5 Retina (2x) </option>
-            <option value='640x1136'>(Portrait) 640x1136px </option>
-            <option value='1136x640'>(Landscape) 1136x640px </option>
-
-            <option disabled> iPhone 6 (2x) </option>
-            <option value='750x1334'>(Portrait) 750x1334px </option>
-            <option value='1334x750'>(Landscape) 1334x750px </option>
-
-            <option disabled> iPhone 6 Plus(3x) </option>
-            <option value='1242x2208'>(Portrait) 1242x2208px </option>
-            <option value='2208x1242'>(Landscape) 2208x1242px </option>
-            <option value=''></option>
-        </optgroup>
-
-        <optgroup label='Android Icons'>
-            <option value='192x192'> 192px </option>
-            <option value='144x144'> 144px </option>
-            <option value='96x96'> 96px </option>
-            <option value='72x72'> 72px </option>
-            <option value='48x48'> 48px </option>
-            <option value='36x36'> 36px </option>
-            <option value='512x512'> 512px </option>
-            <option value=''></option>
-        </optgroup>
-
-        <optgroup label='AndroidSplash'>
-            <option disabled> LDPI </option>
-            <option value='200x320'>(Portrait) 200x320px </option>
-            <option value='320x200'>(Landscape) 320x200px </option>
-
-            <option disabled> MDPI </option>
-            <option value='320x480'>(Portrait) 320x480px </option>
-            <option value='480x320'>(Landscape) 480x320px </option>
-
-            <option disabled> HDPI </option>
-            <option value='480x800'>(Portrait) 480x800px </option>
-            <option value='800x480'>(Landscape) 800x480px </option>
-
-            <option disabled> XXHDPI </option>
-            <option value='960px1600'>(Portrait) 960px1600px </option>
-            <option value='1600x960'>(Landscape) 1600x960px </option>
-
-            <option disabled> XXXHDPI </option>
-            <option value='1280px1920'>(Portrait) 1280px1920px </option>
-            <option value='1920x1280'>(Landscape) 1920x1280px </option>
+      <!-- Container for Dimension options -->
+      <div id="dimensionDiv">
+          <!-- Dropdown menu -->
+          <label for='theSelect'>Dimensions</label>
+          <select id='theSelect' onchange='selectChanged()'>
+            <!--<option value='57x57' disabled selected>Select your dimensions</option>-->
             <option value='custom'>Custom</option>
-        </optgroup>
-    </select>
+
+            <optgroup label='iOS Icons'>
+                <option value='57x57'> 57px </option>
+                <option value='72x72'> 72px </option>
+                <option value='144x144'> 144px </option>
+                <option value='1024x1024'> 1024px </option>
+                <option value='29x29'> 29px </option>
+                <option value='48x48'> 48px </option>
+                <option value='58x58'> 58px </option>
+                <option value='64x64'> 64px </option>
+                <option value='320x320'> 320px </option>
+                <option value=''></option>
+            </optgroup>
+
+            <optgroup label='iOS Splash'>
+                <option disabled> iPad Non-Retina (1x) </option>
+                <option value='768x1024'>(Portrait) 768x1024px </option>
+                <option value='1024x768'>(Landscape) 1024x768px </option>
+
+                <option disabled> iPad Retina (2x) </option>
+                <option value='1536x2048'>(Portrait) 1536x2048px </option>
+                <option value='2048x1536'>(Landscape) 2048x1536px </option>
+
+                <option disabled> iPod Non-Retina (1x) </option>
+                <option value='320x480'>(Portrait) 320x480px </option>
+                <option value='480x320'>(Landscape) 480x320px </option>
+
+                <option disabled> iPod Retina (2x) </option>
+                <option value='640x960'>(Portrait) 640x960px </option>
+                <option value='960x640'>(Landscape) 960x640px </option>
+
+                <option disabled> iPhone 5 Retina (2x) </option>
+                <option value='640x1136'>(Portrait) 640x1136px </option>
+                <option value='1136x640'>(Landscape) 1136x640px </option>
+
+                <option disabled> iPhone 6 (2x) </option>
+                <option value='750x1334'>(Portrait) 750x1334px </option>
+                <option value='1334x750'>(Landscape) 1334x750px </option>
+
+                <option disabled> iPhone 6 Plus(3x) </option>
+                <option value='1242x2208'>(Portrait) 1242x2208px </option>
+                <option value='2208x1242'>(Landscape) 2208x1242px </option>
+                <option value=''></option>
+            </optgroup>
+
+            <optgroup label='Android Icons'>
+                <option value='192x192'> 192px </option>
+                <option value='144x144'> 144px </option>
+                <option value='96x96'> 96px </option>
+                <option value='72x72'> 72px </option>
+                <option value='48x48'> 48px </option>
+                <option value='36x36'> 36px </option>
+                <option value='512x512'> 512px </option>
+                <option value=''></option>
+            </optgroup>
+
+            <optgroup label='AndroidSplash'>
+                <option disabled> LDPI </option>
+                <option value='200x320'>(Portrait) 200x320px </option>
+                <option value='320x200'>(Landscape) 320x200px </option>
+
+                <option disabled> MDPI </option>
+                <option value='320x480'>(Portrait) 320x480px </option>
+                <option value='480x320'>(Landscape) 480x320px </option>
+
+                <option disabled> HDPI </option>
+                <option value='480x800'>(Portrait) 480x800px </option>
+                <option value='800x480'>(Landscape) 800x480px </option>
+
+                <option disabled> XXHDPI </option>
+                <option value='960px1600'>(Portrait) 960px1600px </option>
+                <option value='1600x960'>(Landscape) 1600x960px </option>
+
+                <option disabled> XXXHDPI </option>
+                <option value='1280px1920'>(Portrait) 1280px1920px </option>
+                <option value='1920x1280'>(Landscape) 1920x1280px </option>
+
+            </optgroup>
+          </select>
+
+          <!-- Custom Button -->
+         <button type="button" id="custom-button" > Custom </button>
+
+          <!-- Zoom button -->
+          <label for='zoom'> Zoom</label>
+          <input id="zoom" value="100" type="range" min="0.0" max="500" range="0.1" onchange="selectChanged()" />
+      </div>
 
 
+      <!-- Container for Color options -->
+      <div id="colorDiv">
+          <!--Color_Picker -->
+          <label for='color'> Color</label>
+          <input id="color_picker" type="color" onchange="imageUploaded()" name="color_picker">
+
+          <input type="checkbox" id="gradCheck"> <span> Gradient</span>
 
 
+          <select id='gradType' style="display: none" onchange='gradChanged()'>
+              <option value="0"> No Gradient</option>
+              <option value="1"> Radial</option>
+              <option value="2"> Vertical</option>
+              <option value="3"> Horizontal</option>
+          </select>
+      </div>
+
+
+        <!-- Custom Inputs -->
+        <div id='customWrapper' style="display: none">
+            <p> Enter custom dimensions!</p>
+            <label for='custom_width'> Width</label>
+            <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_width" id="custom_width" placeholder="Width" min="0" max="100" step=".1"> <span class='percent'> %</span>
+            <label for='custom_height'> Height</label>
+            <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_height" id="custom_height" placeholder="Height" min="0" max="100" step=".1"><span class='percent'> % </span>
+        </div>
+
+
+        <div id='gradWrapper' style="display: none">
+            <p> Offset</p>
+
+            <input type="text" onchange='gradButtonClicked()' name="offset_width" id="offset_width" placeholder="Offset X"> <span> px </span>
+            <input type="text" onchange='gradButtonClicked()' name="offset_height" id="offset_height" placeholder="Offset Y"><span> px </span>
+            <input type="color" onchange="imageUploaded()" name="color_picker1" id="color_picker1">
+        </div>
+
+    </div>
 
     <!-- Upload image button -->
     <div id='uploadWrapper'>
-      <input type="file" name="uploadImage" id="uploadImage" onchange="selectChanged()">
+        <input type="file" name="uploadImage" id="uploadImage" onchange="selectChanged()">
     </div>
-        <label for='offset_x'> Width</label>
-      <input class='checkDirect' type="checkbox" onchange='customButtonClicked()' name="offset_x" id="offset_x">
-        <input class='inp100' type="number" onchange='customButtonClicked()' name="offset_x_width" id="offset_x_width" placeholder="Width" min="0" max="100" step=".1"> <span class='percent'> %</span>
-        <label for='offset_y'> Height</label>
-      <input class='checkDirect' type="checkbox" onchange='customButtonClicked()' name="offset_y" id="offset_y">
-        <input class='inp100'  type="number" onchange='customButtonClicked()' name="offset_y_width" id="offset_y_width" placeholder="Height" min="0" max="100" step=".1"><span class='percent'> % </span>
-
-    <!-- Zoom button -->
-    <label for='zoom'> Zoom</label>
-    <input id="zoom" type="range" min="0.0" max="1000" range="0.1" onchange="selectChanged()"/>
-
-    <div id='customWrapper' style="display: none">
-        <p> Enter custom dimensions!</p>
-        <label for='custom_width'> Width</label>
-        <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_width" id="custom_width" placeholder="Width" min="0" max="100" step=".1"> <span class='percent'> %</span>
-        <label for='custom_height'> Height</label>
-        <input class='inp100'  type="number" onchange='customButtonClicked()' name="custom_height" id="custom_height" placeholder="Height" min="0" max="100" step=".1"><span class='percent'> % </span>
-
-    </div>
-        <!-- Color_Picker -->
-    <input type="color" onchange="imageUploaded()" name="color_picker" id="color_picker">
-
-    <select id='gradType' onchange='gradChanged()'>
-        <option value="0"> No Gradient</option>
-        <option value="1"> Radial</option>
-        <option value="2"> Vertical</option>
-        <option value="3"> Horizontal</option>
-    </select>
-
-    <div id='gradWrapper' style="display: none">
-    <p> Offset</p>
-
-        <input type="text" onchange='gradButtonClicked()' name="offset_width" id="offset_width" placeholder="Offset X"> <span> px </span>
-        <input type="text" onchange='gradButtonClicked()' name="offset_height" id="offset_height" placeholder="Offset Y"><span> px </span>
-            <input type="color" onchange="imageUploaded()" name="color_picker1" id="color_picker1">
-
-    </div>
-
 
         <!-- Upload image box -->
-    <div id='ipWrapper'>
-      <img id="imagePreview">
-    </div>
+        <div id='ipWrapper'>
+            <img id="imagePreview">
+        </div>
+
+
+
 
 </body>
 

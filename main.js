@@ -1,6 +1,13 @@
+
         var data77;
         var MAX_WIDTH = 100;
         var MAX_HEIGHT = 100;
+
+        $('#gradCheck :checkbox').change(function() {
+            // this represents the checkbox that was checked
+            // do something with it
+            alert ("Hello World!");
+        });
 
         // Function
         var imageUploaded = function() {
@@ -44,10 +51,9 @@
 
                                 desiredW = canvasW;
                                 desiredH = (img.height * desiredW) / img.width
-                            }
-                            else{
-                              desiredW = img.width;
-                              desiredH = img.height;
+                            } else {
+                                desiredW = img.width;
+                                desiredH = img.height;
                             }
                         } else {
                             // Testing if image height is larger than canvas height. Then shrinks to fit
@@ -56,12 +62,14 @@
 
                                 desiredH = canvasH;
                                 desiredW = (img.width * desiredH) / img.height;
-                            }
-                            else{
-                              desiredW = img.width;
-                              desiredH = img.height;
+                            } else {
+                                desiredW = img.width;
+                                desiredH = img.height;
                             }
                         }
+
+
+
                         // ----- Canvas Options ///
                         canvas.width = canvasW;
                         canvas.height = canvasH;
@@ -73,6 +81,8 @@
 
                         var ctx = canvas.getContext("2d");
 
+
+
                         // Trying to add canvas background color
                         var colorPicked = $("#color_picker").spectrum("get").toHexString();
                         ctx.fillStyle = colorPicked;
@@ -81,8 +91,8 @@
                         // Zooming
                         var zoom = document.getElementById("zoom").value;
                         var zp = parseFloat(zoom) / 100;
-                        desiredW = desiredW*zp;
-                        desiredH = desiredH*zp;
+                        desiredW = desiredW * zp;
+                        desiredH = desiredH * zp;
 
                         ctx.drawImage(img, (canvasW - desiredW) / 2, (canvasH - desiredH) / 2, desiredW, desiredH);
 
@@ -103,64 +113,81 @@
         }
 
 
-        /* Function, gets value and sets dimensions */
-        /* "parseInt($("#theSelect").val())" gets value based on element ID then parses number stored in string to integer */
-        function selectChanged() {
-            if($("#theSelect").val() == 'custom'){
-                $("#customWrapper").show();
-            }
-            else{
-            var dimensions = $("#theSelect").val().split("x");
-            MAX_WIDTH = parseFloat(dimensions[0]);
-            MAX_HEIGHT = parseFloat(dimensions[1]);
-            imageUploaded();
-                            $("#customWrapper").hide();
 
+        /* Function, gets value and sets dimensions */
+        function selectChanged() {
+            if ($("#theSelect").val() == 'custom') {
+                $("#customWrapper").show();
+                imageUploaded();
+            } else {
+              $("#customWrapper").hide();
+                var dimensions = $("#theSelect").val().split("x");
+                MAX_WIDTH = parseFloat(dimensions[0]);
+                MAX_HEIGHT = parseFloat(dimensions[1]);
+                imageUploaded();
+
+            }
         }
-        }
+
 
         // Check button is clicked
         function customButtonClicked() {
-
+            $("#customWrapper").show();
             var custom_width = $("#custom_width").val();
             var custom_height = $("#custom_height").val();
 
             MAX_WIDTH = custom_width;
             MAX_HEIGHT = custom_height;
             imageUploaded();
-
         }
 
-        function gradChanged(){
-            if(parseInt($('#gradType').val()) > 0){
-
+        function gradChanged() {
+            if (parseInt($('#gradType').val()) > 0) {
                 $('#gradWrapper').show();
-            }
-            else{
+            } else {
                 $('#gradWrapper').hide();
             }
 
         }
 
-        function gradButtonClicked(){
+        function gradButtonClicked() {
             imageUploaded();
         }
 
-        // Sets canvas background color
-        //function colorPicker(){
-        //var colorPicked = document.getElementById("color_picker").value;
-        //ctx.fillStyle = colorPicked;
-        //ctx.fillRect(20,20,150,100);
-        //}
-        function start(){
-          $("#color_picker").spectrum({change: function(color) {
-                imageUploaded();
-          },showAlpha: false, cancelText: "test"})
-          $("#color_picker1").spectrum({change: function(color) {
-                imageUploaded();
-          },showAlpha: false, cancelText: "test"})
-          VMasker(document.querySelector(".inp100")).maskNumber();
+        // Gadient checkbox
+        function gradCheck(){
+          //alert ("Hello World!");
+          var x = document.getElementById("gradCheck").checked;
+          if (x == true){
+              $("#gradType").show();
+          }else{
+              $("#gradType").hide();
+          }
+
         }
 
 
+        function start() {
 
+             //var x = $("#gradCheck").addEventListener("click", gradCheck);
+             // var button = document.getElementById("custom-button").addEventListener("click", gradCheck);
+            var button = document.getElementById("gradCheck").addEventListener("click", gradCheck);
+            document.getElementById("theSelect").value = "320x320"
+
+            $("#color_picker").spectrum({
+                change: function(color) {
+                imageUploaded();
+                },
+                showAlpha: false,
+                cancelText: "test"
+            })
+            $("#color_picker1").spectrum({
+                change: function(color) {
+                imageUploaded();
+                },
+                showAlpha: false,
+                cancelText: "test"
+            })
+            VMasker(document.querySelector(".inp100")).maskNumber();
+
+        }
