@@ -83,17 +83,7 @@
 
 
 
-                        // // Trying to add canvas background color
-                        // var colorPicked = $("#color_picker").spectrum("get").toHexString();
-                        // ctx.fillStyle = colorPicked;
-                        // ctx.fillRect(0, 0, canvasW, canvasH);
 
-                        // /////background decision/////
-                        // if(gradChanged()== 0){
-                        //   solidBackgroundColor();
-                        // }else{
-                        //   gradientBackgroundColor();
-                        // }
 
                         // Zooming
                         var zoom = document.getElementById("zoom").value;
@@ -150,11 +140,23 @@
         }
 
         function gradChanged() {
-            if (parseInt($('#gradType').val()) > 0) {
-                $('#gradWrapper').show();
-            } else {
-                $('#gradWrapper').hide();
-            }
+
+          // // Trying to add canvas background color
+          var colorPicked = $("#color_picker").spectrum("get").toHexString();
+              ctx.fillStyle = colorPicked;
+              ctx.fillRect(0, 0, canvasW, canvasH);
+
+              /////background decision/////
+              if(gradChanged()== 0){
+                solidBackgroundColor();
+              }else{
+                gradientBackgroundColor();
+              }
+            // if (parseInt($('#gradType').val()) > 0) {
+            //     $('#gradWrapper').show();
+            // } else {
+            //     $('#gradWrapper').hide();
+            // }
 
         }
 
