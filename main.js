@@ -17,7 +17,7 @@
                 alert("Incorrect file type -- Please ensure you are uploading an image file.");
                 return;
             }
-            $("#ipWrapper").slideDown();
+            $("#ipWrapper, #dimensionDiv, #colorDiv").slideDown();
             // Uploads image and sets it to the appropriate width and height.
             // Uses dimensions from selectChanged function.
             if (file.files && file.files[0] && file.files[0].type.split("/")[0].toLowerCase() === "image") {
