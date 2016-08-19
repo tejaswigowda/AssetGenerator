@@ -149,6 +149,14 @@
               <option value="1"> Vertical</option>
               <option value="2"> Horizontal</option>
           </select>
+
+          <!-- Gradient wrapper-->
+          <div id='gradWrapper' style="display: none">
+              <p> Offset</p>
+              <input type="text" onchange='gradButtonClicked()' name="offset_width" id="offset_width" placeholder="Offset X"> <span> px </span>
+              <input type="text" onchange='gradButtonClicked()' name="offset_height" id="offset_height" placeholder="Offset Y"><span> px </span>
+              <input type="color" onchange="imageUploaded()" name="color_picker1" id="color_picker1">
+          </div>
       </div>
 
 
@@ -161,15 +169,6 @@
             <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_height" id="custom_height" placeholder="Height" min="0" max="100" step=".1"><span class='percent'> % </span>
         </div>
 
-
-        <!-- Gradient wrapper-->
-        <div id='gradWrapper' style="display: none">
-            <p> Offset</p>
-
-            <input type="text" onchange='gradButtonClicked()' name="offset_width" id="offset_width" placeholder="Offset X"> <span> px </span>
-            <input type="text" onchange='gradButtonClicked()' name="offset_height" id="offset_height" placeholder="Offset Y"><span> px </span>
-            <input type="color" onchange="imageUploaded()" name="color_picker1" id="color_picker1">
-        </div>
 
         <!-- Upload image wrapper-->
       <!-- Upload image box -->

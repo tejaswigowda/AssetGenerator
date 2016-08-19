@@ -168,8 +168,10 @@
           var x = document.getElementById("gradCheck").checked;
           if (x == true){
               $("#gradType").show();
+              $('#gradWrapper').show();
           }else{
               $("#gradType").hide();
+              $('#gradWrapper').hide();
           }
 
         }
