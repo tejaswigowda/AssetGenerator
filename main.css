@@ -149,3 +149,12 @@ body{
    position: absolute;
    cursor: pointer;
 }
+
+#dimensionDiv
+{
+  display: none;
+}
+#colorDiv
+{
+  display: none;
+}
