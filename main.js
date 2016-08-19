@@ -3,11 +3,6 @@
         var MAX_WIDTH = 100;
         var MAX_HEIGHT = 100;
 
-        $('#gradCheck :checkbox').change(function() {
-            // this represents the checkbox that was checked
-            // do something with it
-            alert ("Hello World!");
-        });
 
         // Function
         var imageUploaded = function() {
@@ -82,6 +77,45 @@
                         var ctx = canvas.getContext("2d");
 
 
+                        var x = document.getElementById("gradCheck").checked;
+                        if (x == true){
+                            $("#gradType").show();
+                            $('#gradWrapper').show();
+
+                            if (parseInt($('#gradType').val()) == 0) {
+                                alert ("Radial!");
+                                var gradient = ctx.createRadialGradient(100,100,5,100,100,200);
+                                gradient.addColorStop(.0,"blue");
+                                gradient.addColorStop(1,"red");
+                                ctx.fillStyle = gradient;
+                                ctx.fillRect(10,10,canvasW,canvasH);
+
+                            }else if (parseInt($('#gradType').val()) == 1){
+                                alert ("Vertical!");
+                                var gradient = ctx.createLinearGradient(0,0,0,canvasH);
+                                gradient.addColorStop(.0,"blue");
+                                gradient.addColorStop(1,"red");
+                                ctx.fillStyle = gradient;
+                                ctx.fillRect(0,0,canvasW,canvasH);
+                                console.log("Vertical");
+
+                            }else if (parseInt($('#gradType').val()) == 2){
+                                alert ("Horizontal!");
+                                var gradient = ctx.createLinearGradient(0,0,canvasH,0);
+                                gradient.addColorStop(.0,"red");
+                                gradient.addColorStop(1,"blue");
+                                ctx.fillStyle = gradient;
+                                ctx.fillRect(0,0,canvasW,canvasH);
+                                console.log("Horizontal");
+                            }
+
+                        }else{
+                            $("#gradType").hide();
+                            $('#gradWrapper').hide();
+                            var colorPicked = $("#color_picker").spectrum("get").toHexString();
+                            ctx.fillStyle = colorPicked;
+                            ctx.fillRect(0, 0, canvasW, canvasH);
+                        }
 
 
 
@@ -94,7 +128,6 @@
                         ctx.drawImage(img, (canvasW - desiredW) / 2, (canvasH - desiredH) / 2, desiredW, desiredH);
 
                         console.log(desiredW, desiredH)
-
 
 
                         var base64St = canvas.toDataURL("image/png");
@@ -128,7 +161,7 @@
         }
 
 
-        // Check button is clicked
+        // .....
         function customButtonClicked() {
             $("#customWrapper").show();
             var custom_width = $("#custom_width").val();
@@ -140,43 +173,32 @@
         }
 
         function gradChanged() {
+          //var value;
 
-          // // Trying to add canvas background color
-          var colorPicked = $("#color_picker").spectrum("get").toHexString();
-              ctx.fillStyle = colorPicked;
-              ctx.fillRect(0, 0, canvasW, canvasH);
-
-              /////background decision/////
-              if(gradChanged()== 0){
-                solidBackgroundColor();
-              }else{
-                gradientBackgroundColor();
-              }
-            // if (parseInt($('#gradType').val()) > 0) {
-            //     $('#gradWrapper').show();
-            // } else {
-            //     $('#gradWrapper').hide();
-            // }
 
         }
 
         function gradButtonClicked() {
             imageUploaded();
-        }
-
-        // Gadient checkbox
-        function gradCheck(){
-          //alert ("Hello World!");
-          var x = document.getElementById("gradCheck").checked;
-          if (x == true){
-              $("#gradType").show();
-              $('#gradWrapper').show();
-          }else{
-              $("#gradType").hide();
-              $('#gradWrapper').hide();
-          }
 
         }
+
+        // // Gadient checkbox
+        // function gradCheck(){
+        //   //alert ("Hello World!");
+        //   // var x = document.getElementById("gradCheck").checked;
+        //   // if (x == true){
+        //   //     $("#gradType").show();
+        //   //     $('#gradWrapper').show();
+        //   //
+        //   //
+        //   // }else{
+        //   //     $("#gradType").hide();
+        //   //     $('#gradWrapper').hide();
+        //   //
+        //   // }
+        //
+        // }
 
         // ---- Options for what background is picked -----
         // No gradient canvas background color
@@ -199,9 +221,8 @@
 
         function start() {
 
-             //var x = $("#gradCheck").addEventListener("click", gradCheck);
-             // var button = document.getElementById("custom-button").addEventListener("click", gradCheck);
-            var button = document.getElementById("gradCheck").addEventListener("click", gradCheck);
+            var button = document.getElementById("gradCheck").addEventListener("click", imageUploaded);
+
             document.getElementById("theSelect").value = "320x320"
 
             $("#color_picker").spectrum({

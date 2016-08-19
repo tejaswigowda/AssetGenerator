@@ -135,7 +135,7 @@
          <label for='offset_y'> Height</label>
        <input class='checkDirect' type="checkbox" onchange='offsetButtonClicked()' name="offset_y" id="offset_y">
          <input class='inp100'  type="number" onchange='offsetButtonClicked()' name="offset_y_width" id="offset_y_width" placeholder="Height" min="0" max="100" step=".1"><span class='percent'> % </span>
-  
+
 
           <!-- Zoom button -->
           <label for='zoom'> Zoom</label>
@@ -152,10 +152,11 @@
           <input type="checkbox" id="gradCheck"> <span> Gradient</span>
 
 
-          <select id='gradType' style="display: none" onchange='gradChanged()'>
-              <option value="0"> Radial</option>
-              <option value="1"> Vertical</option>
-              <option value="2"> Horizontal</option>
+          <select id='gradType' style="display: none" onchange='imageUploaded()'>
+              <option> Select Gradient </option>
+              <option value="0"> Radial </option>
+              <option value="1"> Vertical </option>
+              <option value="2"> Horizontal </option>
           </select>
 
           <!-- Gradient wrapper-->
