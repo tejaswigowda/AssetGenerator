@@ -70,13 +70,13 @@ body{
   width: 200px;
   height: 30px;
 }
-#custom-button {
-  display: ;
-  margin: 10px 0;
-  padding: 0;
-  width: 200px;
-  height: 30px
-}
+
+/*----- Will not work for changing input boxes
+label#custom_width.inp100{
+  color: #0aadba;
+  border: 1px solid rgba(255,255,255,0.6);
+  text-transform: uppercase;
+}-----*/
 
 
 /*----- Color -----*/
@@ -109,8 +109,6 @@ body{
   width: 200px;
   height: 30px;
 }
-
-
 
 
 #imagePreview {
