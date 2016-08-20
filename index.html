@@ -11,6 +11,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
 
     <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="fonts.css">
+
     <script src="main.js"></script>
 
     <script src="vanilla.js"></script>
@@ -22,15 +24,13 @@
         <h1> Asset Generator </h1>
     </div>
 
-
+    <div id='uploadWrapper'>
+      <div id='uploadWrapperBG'></div>
+      <input type='file' name='uploadImage' id='uploadImage' onchange='selectChanged()'>
+    </div>
 
 
     <div id="main">
-
-      <div id='uploadWrapper'>
-        <div id='uploadWrapperBG'></div>
-        <input type='file' name='uploadImage' id='uploadImage' onchange='selectChanged()'>
-      </div>
       <!-- Container for Dimension options -->
       <div id="dimensionDiv">
           <!-- Dropdown menu -->
@@ -178,13 +178,11 @@
             <label for='custom_height'> Height</label>
             <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_height" id="custom_height" placeholder="Height" min="0" max="100" step=".1"><span class='percent'> % </span>
         </div>
+    </div>
 
-
-        <!-- Upload image wrapper-->
-      <!-- Upload image box -->
-      <div id='ipWrapper'>
-          <img id="imagePreview">
-      </div>
+    <!-- Upload image wrapper-->
+    <div id='ipWrapper'>
+        <img id="imagePreview">
     </div>
 
 
