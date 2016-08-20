@@ -109,6 +109,9 @@ label#custom_width.inp100{
   width: 175px;
   margin:0 4px;
 }
+.sp-button-container{
+  display:none;
+}
 #gradType{
   display:block;
   margin:10px 0;

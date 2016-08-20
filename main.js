@@ -215,17 +215,28 @@
 
             $("#color_picker").spectrum({
                 change: function(color) {
-                imageUploaded();
+                  imageUploaded();
+                },
+                move: function(color) {
+                  imageUploaded();
                 },
                 showAlpha: false,
-                cancelText: "test"
+                clickoutFiresChange: true,
+                hideAfterPaletteSelect:true,
+                cancelText: "",
+                chooseText: ""
             })
             $("#color_picker1").spectrum({
                 change: function(color) {
-                imageUploaded();
+                  imageUploaded();
                 },
-                showAlpha: false,
-                cancelText: "test"
+                move: function(color) {
+                  imageUploaded();
+                },
+                clickoutFiresChange: true,
+                hideAfterPaletteSelect:true,
+                cancelText: "",
+                chooseText: ""
             })
             VMasker(document.querySelector(".inp100")).maskNumber();
             VMasker(document.querySelector(".inp1000")).maskAlphaNum();
