@@ -186,24 +186,6 @@
 
         }
 
-        // // Gadient checkbox
-        // function gradCheck(){
-        //   //alert ("Hello World!");
-        //   // var x = document.getElementById("gradCheck").checked;
-        //   // if (x == true){
-        //   //     $("#gradType").show();
-        //   //     $('#gradWrapper').show();
-        //   //
-        //   //
-        //   // }else{
-        //   //     $("#gradType").hide();
-        //   //     $('#gradWrapper').hide();
-        //   //
-        //   // }
-        //
-        // }
-
-
 
         function start() {
           $("#ipWrapper, #dimensionDiv, #colorDiv").css({display:"none"})

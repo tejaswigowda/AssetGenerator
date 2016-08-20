@@ -37,8 +37,8 @@ body{
 #main{
   display:inline-block;
   position: relative;
-  margin-left:20px;
-  width: 20%;
+  margin:2%;
+  width: 26%;
   overflow: hidden;
   background: #161616;
 }
@@ -46,9 +46,9 @@ body{
 #ipWrapper{
   display:inline-block;
   position: relative;
-  margin-right: 20px;
+  margin: 2%;
   float: right;
-  width: 75%;
+  width: 66%;
   height:auto;
   overflow: auto;
   /*border: groove 1px;*/
@@ -64,16 +64,14 @@ body{
 /*----- Dimensions -----*/
 #dimensionDiv{
   display:inline-block;
-  float: ;
-  margin:0 ;
-  padding:40px 5px 40px 20px;
-  width:100%;
+  margin:5% ;
+  width:90%;
 }
 #theSelect {
   display:block;
   margin:10px 0;
   text-align: center;
-  width: 200px;
+  width: 100%;
   height: 30px;
 }
 
@@ -89,10 +87,8 @@ label#custom_width.inp100{
 #colorDiv{
   display: inline-block;
   border-top: dashed 2px;
-
-  margin:0 50px 0 0;
-  padding:40px 5px 40px 20px;
-  width: 200px;
+  margin:5% ;
+  width:90%;
 }
 .sp-replacer.sp-light{
   display:inline-block;
@@ -112,11 +108,19 @@ label#custom_width.inp100{
 .sp-button-container{
   display:none;
 }
+.sp-dd{
+  display: none;
+}
+
+.sp-preview{
+   max-width: 94%;
+}
 #gradType{
   display:block;
+  text-align: center;
   margin:10px 0;
   text-align: center;
-  width: 200px;
+  width: 100%;
   height: 30px;
 }
 
