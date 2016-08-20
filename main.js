@@ -70,9 +70,6 @@
                         canvas.height = canvasH;
 
                         data77 = img;
-                        console.log(canvasW, canvasH)
-                        console.log(width, height)
-                        console.log(desiredW, desiredH)
 
                         var ctx = canvas.getContext("2d");
 
@@ -119,14 +116,19 @@
                         }
 
 
-                        // Place image
-                        ctx.drawImage(img, (canvasW - desiredW) / 2, (canvasH - desiredH) / 2, desiredW, desiredH);
-
                         // Zooming
                         var zoom = document.getElementById("zoom").value;
                         var zp = parseFloat(zoom) / 100;
+                        console.log(desiredW, desiredH)
+
                         desiredW = desiredW * zp;
                         desiredH = desiredH * zp;
+
+                        console.log(desiredW, desiredH)
+
+                        // Place image
+                        ctx.drawImage(img, (canvasW - desiredW) / 2, (canvasH - desiredH) / 2, desiredW, desiredH);
+
 
                         var base64St = canvas.toDataURL("image/png");
                         document.getElementById("imagePreview").src = base64St;
