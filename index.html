@@ -14,8 +14,8 @@
     <link rel="stylesheet" type="text/css" href="fonts.css">
 
     <script src="main.js"></script>
-
     <script src="vanilla.js"></script>
+
 </head>
 
 <body onload='start()'>
@@ -119,27 +119,20 @@
           </select>
 
 
-        <!-- Custom Inputs -->
-        <div id='customWrapper' style="display: none">
-            <p> Enter custom dimensions!</p>
-            <label for='custom_width'> Width</label>
-            <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_width" id="custom_width" placeholder="Width" min="0" max="100" step=".1"> <span class='percent'> %</span>
-            <label for='custom_height'> Height</label>
-            <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_height" id="custom_height" placeholder="Height" min="0" max="100" step=".1"><span class='percent'> % </span>
-        </div>
-
-
-       <label for='offset_x'> Width</label>
-       <input class='checkDirect' type="checkbox" onchange='offsetButtonClicked()' name="offset_x" id="offset_x">
-         <input class='inp100' type="number" onchange='offsetButtonClicked()' name="offset_x_width" id="offset_x_width" placeholder="Width" min="0" max="100" step=".1"> <span class='percent'> %</span>
-         <label for='offset_y'> Height</label>
-       <input class='checkDirect' type="checkbox" onchange='offsetButtonClicked()' name="offset_y" id="offset_y">
-         <input class='inp100'  type="number" onchange='offsetButtonClicked()' name="offset_y_width" id="offset_y_width" placeholder="Height" min="0" max="100" step=".1"><span class='percent'> % </span>
-
+          <!-- Custom Inputs -->
+          <div id='customWrapper' style="display: none">
+              <label for='custom_width'> Width</label>
+              <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_width" id="custom_width" placeholder="Width" min="0" max="100" step=".1">
+              <br>
+              <label for='custom_height'> Height</label>
+              <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_height" id="custom_height" placeholder="Height" min="0" max="100" step=".1">
+              <br>
+              <br>
+          </div>
 
           <!-- Zoom button -->
           <label for='zoom'> Zoom</label>
-          <input id="zoom" class='inp1000' value="100" type="number" min="0.0" max="1000" step="0.1" onchange="selectChanged()" />
+          <input id="zoom" class='inp1000' value="100" type="number" min="0.0" max="1000" step="0.1" onchange="selectChanged()"> <span class='percent'> %</span>
       </div>
 
 
@@ -169,15 +162,6 @@
           </div>
       </div>
 
-
-        <!-- Custom Inputs -->
-        <div id='customWrapper' style="display: none">
-            <p> Enter custom dimensions!</p>
-            <label for='custom_width'> Width</label>
-            <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_width" id="custom_width" placeholder="Width" min="0" max="100" step=".1"> <span class='percent'> %</span>
-            <label for='custom_height'> Height</label>
-            <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_height" id="custom_height" placeholder="Height" min="0" max="100" step=".1"><span class='percent'> % </span>
-        </div>
     </div>
 
     <!-- Upload image wrapper-->
