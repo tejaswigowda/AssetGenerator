@@ -177,3 +177,8 @@ label#custom_width.inp100{
 {
   display: none;
 }
+
+#customWrapper label
+{
+  min-width: 200px;
+}
