@@ -150,12 +150,13 @@
               <option value="1"> Vertical </option>
               <option value="2"> Horizontal </option>
           </select>
+          <br>
 
           <!-- Gradient wrapper-->
           <div id='gradWrapper' style="display: none">
               <label for='color_picker1'> Secondary Color </label>
               <input type="color" onchange="imageUploaded()" name="color_picker1" id="color_picker1">
-              <p> Offset </p>
+              <p id="offset-label"> Offset </p>
               <input type="text" onchange='gradButtonClicked()' name="offset_width" id="offset_width" placeholder="Offset X"> <span> px </span>
               <input type="text" onchange='gradButtonClicked()' name="offset_height" id="offset_height" placeholder="Offset Y"><span> px </span>
           </div>
