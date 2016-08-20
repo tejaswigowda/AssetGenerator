@@ -12,7 +12,8 @@
                 alert("Incorrect file type -- Please ensure you are uploading an image file.");
                 return;
             }
-            $("#ipWrapper, #dimensionDiv, #colorDiv").slideDown();
+            $("#ipWrapper").css({"display":""})
+            $("#dimensionDiv, #colorDiv").css({"display":"block"})
             // Uploads image and sets it to the appropriate width and height.
             // Uses dimensions from selectChanged function.
             if (file.files && file.files[0] && file.files[0].type.split("/")[0].toLowerCase() === "image") {
@@ -205,6 +206,8 @@
 
 
         function start() {
+          $("#ipWrapper, #dimensionDiv, #colorDiv").css({display:"none"})
+
 
             var button = document.getElementById("gradCheck").addEventListener("click", imageUploaded);
 
