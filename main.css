@@ -166,3 +166,8 @@ body{
 {
   display: none;
 }
+
+#customWrapper label
+{
+  min-width: 200px;
+}
