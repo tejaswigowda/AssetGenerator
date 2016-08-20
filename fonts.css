@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*Caviar Dreams*/
+@font-face {
+    font-family: 'Caviar_Dreams_Regular';
+    src: url('caviar-dreams/CaviarDreams.ttf');*/
+}
+@font-face {
+    font-family: 'Caviar_Dreams_Bold';
+    src: url('caviar-dreams/Caviar_Dreams_Bold.ttf');
+}
+@font-face {
+    font-family: 'Caviar_Dreams_Italic';
+    src: url('caviar-dreams/CaviarDreams_BoldItalic.ttf');
+}

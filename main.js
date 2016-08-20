@@ -78,6 +78,8 @@
                         var x = document.getElementById("gradCheck").checked;
                         var colorPickedPrimary = $("#color_picker").spectrum("get").toHexString();
                         var colorPickedSecondary = $("#color_picker1").spectrum("get").toHexString();
+                        var offsetX = document.getElementById("offset_width").value;
+                        var offsetY = document.getElementById("offset_height").value;
 
                         if (x == true){
                             $("#gradType").show();
