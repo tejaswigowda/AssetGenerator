@@ -114,6 +114,8 @@ label#custom_width.inp100{
 
 .sp-preview{
    max-width: 94%;
+   min-width: 94%;
+   margin-left: 2%;
 }
 #gradType{
   display:block;
@@ -185,4 +187,20 @@ label#custom_width.inp100{
 #customWrapper label
 {
   min-width: 200px;
+}
+
+@media screen and (min-width:10px) and (max-width: 750px) {
+    #main {
+      display: block;
+      width: 90%;
+      margin-left:5%;
+    }
+}
+@media screen  and (min-width:10px) and (max-width: 750px) {
+    #ipWrapper {
+      display: block;
+      width: 90%;
+      margin-left:5%;
+      float: none;
+    }
 }
