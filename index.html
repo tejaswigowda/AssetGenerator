@@ -145,13 +145,19 @@
               <br>
               <label for='custom_height'> Height</label>
               <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_height" id="custom_height" placeholder="Height" min="0" max="100" step=".1">
+      </div>
               <br>
-              <br>
-          </div>
 
           <!-- Zoom button -->
           <label for='zoom'> Zoom</label>
           <input id="zoom" class='inp1000' value="100" type="number" min="0.0" max="1000" step="0.1" onchange="selectChanged()"> <span class='percent'> %</span>
+              <br>
+
+          <!-- Image offset -->
+          <label > Image offset </label>
+              <br>
+          <input id="ioX" class='inp100' value="50" type="number" min="0.0" max="100" step="0.1" onchange="selectChanged()"> <span class='percent'> %</span>
+          <input id="ioY" class='inp100' value="50" type="number" min="0.0" max="100" step="0.1" onchange="selectChanged()"> <span class='percent'> %</span>
       </div>
 
 

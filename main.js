@@ -3,9 +3,12 @@
         var MAX_WIDTH = 100;
         var MAX_HEIGHT = 100;
 
+       
 
         // Function
         var imageUploaded = function() {
+            var imageOffsetXpercent = parseFloat(document.getElementById("ioX").value)
+            var imageOffsetYpercent = parseFloat(document.getElementById("ioY").value)
             //Checks if file is an image.
             var file = $('#uploadImage').get(0); // shortcut for js - document.getElementById("uploadImage").get(0);
             if (file.files[0].type.split("/")[0].toLowerCase() != "image") {
@@ -130,7 +133,9 @@
                         console.log(desiredW, desiredH)
 
                         // Place image
-                        ctx.drawImage(img, (canvasW - desiredW) / 2, (canvasH - desiredH) / 2, desiredW, desiredH);
+                        var posX = (canvasW - desiredW) * imageOffsetXpercent/100;
+                        var posY = (canvasH - desiredH) * imageOffsetYpercent/100;
+                        ctx.drawImage(img, posX, posY, desiredW, desiredH);
 
 
                         var base64St = canvas.toDataURL("image/png");
