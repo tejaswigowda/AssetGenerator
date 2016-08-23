@@ -1,0 +1,20 @@
+----- Add and remove tasks as we go -----
+
+* Set min width for #main so it scale down doesnt push "%" down
+* fix radial
+	1. radial is off center
+	2. background shrinks with radial selected
+* Add offset for dimensions
+* Add offset for gradient
+* Add close button for color pickers
+* Add Apple watch dimensions
+
+
+* Add blackroom.js
+
+
+---- possible bugs ----
+* When uploaded large images and setting large size the color picker freezes for period of time. 
+
+
+

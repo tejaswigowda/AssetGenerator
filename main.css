@@ -1,10 +1,11 @@
 body{
   margin: auto 0;
   height:auto;
-  /*background-color: #bcd2ea;*/
-  background-color: rgba(49, 165, 255,.5);
-  background-image: url(bg.png);
-  background-size: 30px;
+  /*background-color: #3675ab;*/
+  /*background-color: rgba(49, 165, 255,.5);
+  background-image: url(bg4.png);*/
+  background: linear-gradient(#48d1cc, #27408b);
+  background-size: ;
   font-family:Caviar_Dreams_Regular;
   font-size: 20px;
   font-weight: bold;
@@ -15,7 +16,7 @@ body{
 
 #header {
   position:relative;
-  margin:40px auto 10px auto;
+  margin:100px auto 10px auto;
   width:100%;
   text-align:center;
   background-color:transparent;
