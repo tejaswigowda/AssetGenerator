@@ -5,7 +5,6 @@ body{
   /*background-color: rgba(49, 165, 255,.5);
   background-image: url(bg4.png);*/
   background: linear-gradient(#48d1cc, #27408b);
-  background-size: ;
   font-family:Caviar_Dreams_Regular;
   font-size: 20px;
   font-weight: bold;
@@ -13,27 +12,34 @@ body{
 
 
 }
+#navigation-bar {
 
-#header {
-  position:relative;
-  margin:100px auto 10px auto;
+  margin:0;
+  padding: 0;
   width:100%;
-  text-align:center;
-  background-color:transparent;
+  background-color:#333;
 
 
 }
 
-#header h1 {
-  margin:auto;
-  padding:auto;
-  width:auto;
+#navigation-bar h1 {
+  display: inline-block;
+  margin:0 0 0 50px;
+  padding:0;
+  width:30%;
   vertical-align:middle;
-  color: #333;
+  color: 31a5ff;
+  /*color: #f5fffa;*/
   font-family:Caviar_Dreams_Bold;
-  font-size: 45px;
-
+  font-size: 40;
 }
+
+/* Navigation Bar List */
+#navigation-bar ul { display:inline-block; list-style:none; margin:0; padding:0px 0px 0px 0px; text-align:center;}
+#navigation-bar ul li { display:inline-block; padding:0px 40px 0px 40px; }
+#navigation-bar ul li a { color:#31a5ff; text-decoration:none; display:inline-block; font-family:font-family:Caviar_Dreams_Regular; font-size:24px; padding: 20px 20px;}
+#navigation-bar ul li a:hover { color:#ccc; background:!important;}
+#navigation-bar ul li a.nav_sel { color:#31a5ff; background:#4e4e4e; }
 
 #main{
   display:inline-block;
@@ -137,7 +143,7 @@ label#custom_width.inp100{
   display: block;
   font-size: 80px;
   text-align: center;
-  margin: 40px auto 80px auto;
+  margin: 80px auto 80px auto;
   line-height: 100px;
   background-position: 50%;
   background-size: cover;
