@@ -180,9 +180,11 @@
           <div id='gradWrapper' style="display: none">
               <label for='color_picker1'> Secondary Color </label>
               <input type="color" onchange="imageUploaded()" name="color_picker1" id="color_picker1">
-              <p> Offset </p>
-              <input type="text" onchange='gradButtonClicked()' name="offset_width" id="offset_width" placeholder="Offset X"> <span> px </span>
-              <input type="text" onchange='gradButtonClicked()' name="offset_height" id="offset_height" placeholder="Offset Y"><span> px </span>
+          <!-- Gradient offset -->
+          <label > Gradient Offset </label>
+              <br>
+          <input id="goX" class='inp100' value="50" type="number" min="0.0" max="100" step="0.1" onchange="selectChanged()"> <span class='percent'> %</span>
+          <input id="goY" class='inp100' value="50" type="number" min="0.0" max="100" step="0.1" onchange="selectChanged()"> <span class='percent'> %</span>
           </div>
       </div>
 

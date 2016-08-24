@@ -82,17 +82,19 @@
                         var x = document.getElementById("gradCheck").checked;
                         var colorPickedPrimary = $("#color_picker").spectrum("get").toHexString();
                         var colorPickedSecondary = $("#color_picker1").spectrum("get").toHexString();
-                        var offsetX = document.getElementById("offset_width").value;
-                        var offsetY = document.getElementById("offset_height").value;
+                        var offsetXp = parseFloat(document.getElementById("goX").value);
+                        var offsetYp = parseFloat(document.getElementById("goY").value);
+                        var goffX = canvasW * offsetXp/100;
+                        var goffY = canvasH * offsetYp/100;
 
                         if (x == true){
                             $("#gradType").show();
                             $('#gradWrapper').show();
 
                             if (parseInt($('#gradType').val()) == 0) {
-                                var gradient = ctx.createRadialGradient(100,100,5,100,100,200);
-                                gradient.addColorStop(.0,colorPickedPrimary);
-                                gradient.addColorStop(1,colorPickedSecondary);
+                                var gradient = ctx.createRadialGradient(goffX,goffY,5,100,100,200);
+                                gradient.addColorStop(offsetXp/100,colorPickedPrimary);
+                                gradient.addColorStop(offsetXp/100,colorPickedSecondary);
                                 ctx.fillStyle = gradient;
                                 ctx.fillRect(10,10,canvasW,canvasH);
 
