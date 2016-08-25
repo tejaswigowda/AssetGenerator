@@ -141,12 +141,10 @@ function renderImage() {
     // Zooming
     var zoom = document.getElementById("zoom").value;
     var zp = parseFloat(zoom) / 100;
-    console.log(desiredW, desiredH)
 
     desiredW = desiredW * zp;
     desiredH = desiredH * zp;
 
-    console.log(desiredW, desiredH)
 
     // Place image
     var posX = (canvasW - desiredW) * imageOffsetXpercent / 100;
