@@ -1,7 +1,7 @@
 
         var theImage;
-        var MAX_WIDTH = 100;
-        var MAX_HEIGHT = 100;
+        var MAX_WIDTH = 320;
+        var MAX_HEIGHT = 320;
 
        
 
@@ -164,13 +164,13 @@ function renderImage()
         function selectChanged() {
             if ($("#theSelect").val() == 'custom') {
                 $("#customWrapper").show();
-                imageUploaded();
+                renderImage();
             } else {
               $("#customWrapper").hide();
                 var dimensions = $("#theSelect").val().split("x");
                 MAX_WIDTH = parseFloat(dimensions[0]);
                 MAX_HEIGHT = parseFloat(dimensions[1]);
-                imageUploaded();
+                renderImage();
 
             }
         }

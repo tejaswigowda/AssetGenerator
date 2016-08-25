@@ -45,7 +45,7 @@
 
     <div id='uploadWrapper'>
       <div id='uploadWrapperBG'></div>
-      <input type='file' name='uploadImage' id='uploadImage' onchange='selectChanged()'>
+      <input type='file' name='uploadImage' id='uploadImage' onchange='imageUploaded()'>
     </div>
 
 
@@ -168,12 +168,12 @@
           <!--Color_Picker -->
               <br>
           <label for='color_picker'> Background Color </label>
-          <input id="color_picker" type="color" onchange="imageUploaded()" name="color_picker">
+          <input id="color_picker" type="color" onchange="renderImage()" name="color_picker">
 
            <label for='gradCheck'> Gradient</label><input type="checkbox" id="gradCheck">
 
 
-          <select id='gradType' style="display: none" onchange='imageUploaded()'>
+          <select id='gradType' style="display: none" onchange='renderImage()'>
             <!-- <option value="0"> Radial </option> -->
               <option value="1"> Vertical </option>
               <option value="2"> Horizontal </option>
@@ -182,7 +182,7 @@
           <!-- Gradient wrapper-->
           <div id='gradWrapper' style="display: none">
               <label for='color_picker1'> Gradient Color </label>
-              <input type="color" onchange="imageUploaded()" name="color_picker1" id="color_picker1">
+              <input type="color" onchange="renderImage()" name="color_picker1" id="color_picker1">
           <!-- Gradient offset -->
             <div id='colorStops'>
           <label > Color Stops </label>
