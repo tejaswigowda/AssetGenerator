@@ -171,7 +171,7 @@
 
 
           <select id='gradType' style="display: none" onchange='imageUploaded()'>
-              <option value="0"> Radial </option>
+            <!-- <option value="0"> Radial </option> -->
               <option value="1"> Vertical </option>
               <option value="2"> Horizontal </option>
           </select>
@@ -181,10 +181,12 @@
               <label for='color_picker1'> Secondary Color </label>
               <input type="color" onchange="imageUploaded()" name="color_picker1" id="color_picker1">
           <!-- Gradient offset -->
-          <label > Gradient Offset </label>
+            <div id='colorStops'>
+          <label > Color Stops </label>
               <br>
           <input id="goX" class='inp100' value="50" type="number" min="0.0" max="100" step="0.1" onchange="selectChanged()"> <span class='percent'> %</span>
           <input id="goY" class='inp100' value="50" type="number" min="0.0" max="100" step="0.1" onchange="selectChanged()"> <span class='percent'> %</span>
+            </div>
           </div>
       </div>
 

@@ -92,23 +92,23 @@
                             $('#gradWrapper').show();
 
                             if (parseInt($('#gradType').val()) == 0) {
-                                var gradient = ctx.createRadialGradient(goffX,goffY,5,100,100,200);
+                                var gradient = ctx.createRadialGradient(goffX,goffY,5,100,100,canvasH);
                                 gradient.addColorStop(offsetXp/100,colorPickedPrimary);
-                                gradient.addColorStop(offsetXp/100,colorPickedSecondary);
+                                gradient.addColorStop(offsetYp/100,colorPickedSecondary);
                                 ctx.fillStyle = gradient;
                                 ctx.fillRect(10,10,canvasW,canvasH);
 
                             }else if (parseInt($('#gradType').val()) == 1){
                                 var gradient = ctx.createLinearGradient(0,0,0,canvasH);
-                                gradient.addColorStop(.0,colorPickedPrimary);
-                                gradient.addColorStop(1,colorPickedSecondary);
+                                gradient.addColorStop(offsetXp/100,colorPickedPrimary);
+                                gradient.addColorStop(offsetYp/100,colorPickedSecondary);
                                 ctx.fillStyle = gradient;
                                 ctx.fillRect(0,0,canvasW,canvasH);
 
                             }else if (parseInt($('#gradType').val()) == 2){
                                 var gradient = ctx.createLinearGradient(0,0,canvasH,0);
-                                gradient.addColorStop(.0,colorPickedPrimary);
-                                gradient.addColorStop(1,colorPickedSecondary);
+                                gradient.addColorStop(offsetXp/100,colorPickedPrimary);
+                                gradient.addColorStop(offsetYp/100,colorPickedSecondary);
                                 ctx.fillStyle = gradient;
                                 ctx.fillRect(0,0,canvasW,canvasH);
 
