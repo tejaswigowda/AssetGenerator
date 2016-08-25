@@ -1,5 +1,5 @@
 
-        var data77;
+        var theImage;
         var MAX_WIDTH = 100;
         var MAX_HEIGHT = 100;
 
@@ -7,8 +7,6 @@
 
         // Function
         var imageUploaded = function() {
-            var imageOffsetXpercent = parseFloat(document.getElementById("ioX").value)
-            var imageOffsetYpercent = parseFloat(document.getElementById("ioY").value)
             //Checks if file is an image.
             var file = $('#uploadImage').get(0); // shortcut for js - document.getElementById("uploadImage").get(0);
             if (file.files[0].type.split("/")[0].toLowerCase() != "image") {
@@ -24,14 +22,29 @@
 
                 FR.onload = function(e) {
                     var data = e.target.result;
-                    var canvas = document.createElement("canvas");
                     var img = document.createElement("img");
 
                     img.onload = function() {
 
+                        theImage = img;
+                        renderImage();
+
+                    }
+                    img.src = data;
+                };
+
+                FR.readAsDataURL(file.files[0]);
+            }
+        }
+
+function renderImage()
+{
+            var imageOffsetXpercent = parseFloat(document.getElementById("ioX").value)
+            var imageOffsetYpercent = parseFloat(document.getElementById("ioY").value)
+                        var canvas = document.createElement("canvas");
                         // Uploaded image dimensions
-                        var width = img.width;
-                        var height = img.height;
+                        var width = theImage.width;
+                        var height = theImage.height;
 
                         // Canvas dimensions
                         var canvasW = MAX_WIDTH;
@@ -43,27 +56,27 @@
 
 
                         // testing for landscape or portrait image dimensions
-                        if (img.width > img.height) { // image is landscape
-                            // Testing if image width is larger than canvas width then shrinks img to fit
-                            if (img.width > MAX_WIDTH) {
+                        if (theImage.width > theImage.height) { // image is landscape
+                            // Testing if image width is larger than canvas width then shrinks theImage to fit
+                            if (theImage.width > MAX_WIDTH) {
                                 canvasW = MAX_WIDTH;
 
                                 desiredW = canvasW;
-                                desiredH = (img.height * desiredW) / img.width
+                                desiredH = (theImage.height * desiredW) / theImage.width
                             } else {
-                                desiredW = img.width;
-                                desiredH = img.height;
+                                desiredW = theImage.width;
+                                desiredH = theImage.height;
                             }
                         } else {
                             // Testing if image height is larger than canvas height. Then shrinks to fit
-                            if (img.height > MAX_HEIGHT) { // image is portrait
+                            if (theImage.height > MAX_HEIGHT) { // image is portrait
                                 canvasH = MAX_HEIGHT;
 
                                 desiredH = canvasH;
-                                desiredW = (img.width * desiredH) / img.height;
+                                desiredW = (theImage.width * desiredH) / theImage.height;
                             } else {
-                                desiredW = img.width;
-                                desiredH = img.height;
+                                desiredW = theImage.width;
+                                desiredH = theImage.height;
                             }
                         }
 
@@ -73,7 +86,6 @@
                         canvas.width = canvasW;
                         canvas.height = canvasH;
 
-                        data77 = img;
 
                         var ctx = canvas.getContext("2d");
 
@@ -137,23 +149,16 @@
                         // Place image
                         var posX = (canvasW - desiredW) * imageOffsetXpercent/100;
                         var posY = (canvasH - desiredH) * imageOffsetYpercent/100;
-                        ctx.drawImage(img, posX, posY, desiredW, desiredH);
+                        ctx.drawImage(theImage, posX, posY, desiredW, desiredH);
 
 
                         var base64St = canvas.toDataURL("image/png");
                         document.getElementById("imagePreview").src = base64St;
-                        document.getElementById("uploadWrapperBG").style.backgroundImage = "url(" + img.currentSrc + ")";
+                        document.getElementById("uploadWrapperBG").style.backgroundImage = "url(" + theImage.currentSrc + ")";
                         document.getElementById("imagePreview").style.height = MAX_HEIGHT + "px";
                         document.getElementById("imagePreview").style.width = MAX_WIDTH + "px";
-                    }
-                    img.src = data;
-                };
 
-                FR.readAsDataURL(file.files[0]);
-            }
-        }
-
-
+}
 
         /* Function, gets value and sets dimensions */
         function selectChanged() {
