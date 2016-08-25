@@ -146,10 +146,10 @@
               <label for='custom_height'> Height</label>
               <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_height" id="custom_height" placeholder="Height" min="0" max="100" step=".1">
       </div>
-              <br>
 
           <!-- Zoom button -->
           <label for='zoom'> Zoom</label>
+              <br>
           <input id="zoom" class='inp1000' value="100" type="number" min="0.0" max="1000" step="0.1" onchange="selectChanged()"> <span class='percent'> %</span>
               <br>
 
@@ -158,13 +158,16 @@
               <br>
           <input id="ioX" class='inp100' value="50" type="number" min="0.0" max="100" step="0.1" onchange="selectChanged()"> <span class='percent'> %</span>
           <input id="ioY" class='inp100' value="50" type="number" min="0.0" max="100" step="0.1" onchange="selectChanged()"> <span class='percent'> %</span>
+              <br>
+              <br>
       </div>
 
 
       <!-- Container for Color options -->
       <div id="colorDiv">
           <!--Color_Picker -->
-          <label for='color_picker'> Primary Color </label>
+              <br>
+          <label for='color_picker'> Background Color </label>
           <input id="color_picker" type="color" onchange="imageUploaded()" name="color_picker">
 
            <label for='gradCheck'> Gradient</label><input type="checkbox" id="gradCheck">
@@ -178,7 +181,7 @@
 
           <!-- Gradient wrapper-->
           <div id='gradWrapper' style="display: none">
-              <label for='color_picker1'> Secondary Color </label>
+              <label for='color_picker1'> Gradient Color </label>
               <input type="color" onchange="imageUploaded()" name="color_picker1" id="color_picker1">
           <!-- Gradient offset -->
             <div id='colorStops'>
