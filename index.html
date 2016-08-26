@@ -12,6 +12,8 @@
 
     <link rel="stylesheet" type="text/css" href="main.css">
     <link rel="stylesheet" type="text/css" href="fonts.css">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
     <script src="main.js"></script>
     <script src="vanilla.js"></script>
@@ -20,22 +22,39 @@
 
 <body onload='start()'>
 
-    <div id="header">
-        <h1> Asset Generator </h1>
+    <div id="navigation-bar">
+        <h1> Asset Ninja </h1>
+        <ul>
+            <li>
+                <a href="index.html" class="nav_sel"> Tool </a>
+            </li>
+            <li>
+                <a href=""> Account </a>
+            </li>
+            <li>
+                <a href=""> Manage </a>
+            </li>
+            <li>
+                <a href=""> Sign In </a>
+            </li>
+        </ul>
     </div>
 
+
+
+
     <div id='uploadWrapper'>
-      <div id='uploadWrapperBG'></div>
-      <input type='file' name='uploadImage' id='uploadImage' onchange='selectChanged()'>
+        <div id='uploadWrapperBG'></div>
+        <input type='file' name='uploadImage' id='uploadImage' onchange='imageUploaded()'>
     </div>
 
 
     <div id="main">
-      <!-- Container for Dimension options -->
-      <div id="dimensionDiv">
-          <!-- Dropdown menu -->
-          <label for='theSelect'>Dimensions</label>
-          <select id='theSelect' onchange='selectChanged()'>
+        <!-- Container for Dimension options -->
+        <div id="dimensionDiv">
+            <!-- Dropdown menu -->
+            <label for='theSelect'>Dimensions</label>
+            <select id='theSelect' onchange='selectChanged()'>
             <!--<option value='57x57' disabled selected>Select your dimensions</option>-->
             <option value='custom'>Custom</option>
 
@@ -119,48 +138,62 @@
           </select>
 
 
-          <!-- Custom Inputs -->
-          <div id='customWrapper' style="display: none">
-              <label for='custom_width'> Width</label>
-              <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_width" id="custom_width" placeholder="Width" min="0" max="100" step=".1">
-              <br>
-              <label for='custom_height'> Height</label>
-              <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_height" id="custom_height" placeholder="Height" min="0" max="100" step=".1">
-              <br>
-              <br>
-          </div>
+            <!-- Custom Inputs -->
+            <div id='customWrapper' style="display: none">
+                <label for='custom_width'> Width</label>
+                <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_width" id="custom_width" placeholder="Width" min="0" max="100" step=".1">
+                <br>
+                <label for='custom_height'> Height</label>
+                <input class='inp100' type="number" onchange='customButtonClicked()' name="custom_height" id="custom_height" placeholder="Height" min="0" max="100" step=".1">
+            </div>
 
-          <!-- Zoom button -->
-          <label for='zoom'> Zoom</label>
-          <input id="zoom" class='inp1000' value="100" type="number" min="0.0" max="1000" step="0.1" onchange="selectChanged()"> <span class='percent'> %</span>
-      </div>
+            <!-- Zoom button -->
+            <label for='zoom'> Zoom</label>
+            <br>
+            <input id="zoom" class='inp1000' value="100" type="number" min="0.0" max="1000" step="0.1" onchange="selectChanged()"> <span class='percent'> %</span>
+            <br>
+
+            <!-- Image offset -->
+            <label> Image offset </label>
+            <br>
+            <input id="ioX" class='inp100' value="50" type="number" min="0.0" max="100" step="0.1" onchange="selectChanged()"> <span class='percent'> %</span>
+            <input id="ioY" class='inp100' value="50" type="number" min="0.0" max="100" step="0.1" onchange="selectChanged()"> <span class='percent'> %</span>
+            <br>
+            <br>
+        </div>
 
 
-      <!-- Container for Color options -->
-      <div id="colorDiv">
-          <!--Color_Picker -->
-          <label for='color_picker'> Primary Color </label>
-          <input id="color_picker" type="color" onchange="imageUploaded()" name="color_picker">
+        <!-- Container for Color options -->
+        <div id="colorDiv">
+            <!--Color_Picker -->
+            <br>
+            <label for='color_picker'> Background Color </label>
+            <input id="color_picker" type="color" onchange="renderImage()" name="color_picker">
 
-          <input type="checkbox" id="gradCheck"> <span> Gradient</span>
+            <label for='gradCheck'> Gradient</label><input type="checkbox" id="gradCheck">
 
 
-          <select id='gradType' style="display: none" onchange='imageUploaded()'>
-              <option value="0"> Radial </option>
+            <select id='gradType' style="display: none" onchange='renderImage()'>
+            <!-- <option value="0"> Radial </option> -->
               <option value="1"> Vertical </option>
               <option value="2"> Horizontal </option>
           </select>
           <br>
 
-          <!-- Gradient wrapper-->
-          <div id='gradWrapper' style="display: none">
-              <label for='color_picker1'> Secondary Color </label>
-              <input type="color" onchange="imageUploaded()" name="color_picker1" id="color_picker1">
-              <p id="offset-label"> Offset </p>
-              <input type="text" onchange='gradButtonClicked()' name="offset_width" id="offset_width" placeholder="Offset X"> <span> px </span>
-              <input type="text" onchange='gradButtonClicked()' name="offset_height" id="offset_height" placeholder="Offset Y"><span> px </span>
-          </div>
-      </div>
+
+            <!-- Gradient wrapper-->
+            <div id='gradWrapper' style="display: none">
+                <label for='color_picker1'> Gradient Color </label>
+                <input type="color" onchange="renderImage()" name="color_picker1" id="color_picker1">
+                <!-- Gradient offset -->
+                <div id='colorStops'>
+                    <label> Color Stops </label>
+                    <br>
+                    <input id="goX" class='inp100' value="10" type="number" min="0.0" max="100" step="0.1" onchange="selectChanged()"> <span class='percent'> %</span>
+                    <input id="goY" class='inp100' value="90" type="number" min="0.0" max="100" step="0.1" onchange="selectChanged()"> <span class='percent'> %</span>
+                </div>
+            </div>
+        </div>
 
     </div>
 

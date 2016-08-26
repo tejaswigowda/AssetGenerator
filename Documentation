@@ -1,0 +1,72 @@
+Names for App: quicksplash, assetgenerator, EasyAssets, EZAssets, ASAPAssets, AssetNinja
+
+In drect names: Something like Atom IDE; Aurora Assets
+
+Login Screen:
+can contain a hi-rez image of an example image or mock up of what the app does using a generic log design or text saying "your logo here"
+I think it would be nice for it to look like a combination of caresapp and my photosharing website. 
+
+Description: 
+(Image asset generator)
+**AssetNinja** is a tool that allows developers to quickly and effectively create image assets for any mobile or web based applicaton. 
+**AssetNinja** Provides a way to manage all your assets for multiple projects.
+
+built-in options to generate image assets for all device screen sizes while allowing for custom resolutions aswell. 
+
+Instead of manually altering each image in an editig software like Adobe Photoshop, simply upload the image you want to use as an icon, logo, or splash display and chose your resolution and background. Yes, its that easy.  The image is automatically scaled to the desired size while maintaining the aspect ratio. 
+
+easily manage and update all your image assets across all app versions
+
+Show All OS icons, and broswer icons
+
+Demographic:
+	*developers
+	*future (marketers)
+
+Bullet Points:
+	* manage assets (icons and spalsh)
+	* The app works accross all plateforms 
+
+	* Hit same points as 
+	  https://itunes.apple.com/us/app/assets-generator/id980253102?mt=12
+
+	  http://assetsgap.com/#
+
+	  https://www.microsoft.com/en-us/store/p/asset-generator/9wzdncrdqwvs
+
+      http://romannurik.github.io/AndroidAssetStudio/index.html
+
+	  https://resizeappicon.com/
+	
+
+Useful links:
+	
+	Photos
+	https://unsplash.com/collections/156576/do-your-work
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Features to add:
+	* favicon 
+	* rotate image
+	* Scale types: streached, cropped, fitted
+	* Option to select device your creating assets for; then provide option to download a .zip file containing all ICONS for that deveice. 
+	
+
+Features to consider:
+	
+	* Paid monthly subscription (requires login)
+	* One time payment
+
+	* Option to change ip-wrapper background color so users can see how theire asset will look on against different backgrounds
+	* Will this really be used on mobile devices? Is a app really nessesary? I like the layout of the paid Asset Generator you Tejaswii 		  owns.
+	* After image is uploaded, automatically scroll down to the options section.
+	* Transparency option for logo
+
+
+
